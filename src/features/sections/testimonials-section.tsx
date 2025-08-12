@@ -32,7 +32,7 @@ export function TestimonialsSection() {
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-brand-navy-800 mb-4">What Our Clients Say</h2>
           <p className="text-xl text-brand-navy-700 max-w-3xl mx-auto">
-            Don't just take our word for it. Here's what our clients have to say about our legal services and commitment
+            Don&apos;t just take our word for it. Here&apos;s what our clients have to say about our legal services and commitment
             to excellence.
           </p>
         </div>
@@ -54,7 +54,7 @@ export function TestimonialsSection() {
                   ))}
                 </div>
 
-                <p className="text-brand-navy-700 mb-6 italic leading-relaxed">"{testimonial.content}"</p>
+                <p className="text-brand-navy-700 mb-6 italic leading-relaxed">&ldquo;{testimonial.content}&rdquo;</p>
 
                 <div className="border-t pt-4">
                   <div className="font-semibold text-brand-navy-800">{testimonial.name}</div>

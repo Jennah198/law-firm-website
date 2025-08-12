@@ -46,29 +46,24 @@ export function Navigation() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ${
-        isHidden ? "-translate-y-full" : "translate-y-0"
-      } ${
-        // Add background and shadow only when not hidden and scrolled a bit
-        !isHidden && prevScrollY > 10
-          ? "bg-white/95 dark:bg-brand-navy-900/95 backdrop-blur-sm shadow-sm"
-          : "bg-transparent"
-      }`}
+      className={`sticky top-0 left-0 right-0 z-50 transition-transform duration-300 `}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-24">
-          {/* Logo */}
-          <div className="flex-shrink-0">
-            <img
-              src="/placeholder-logo.svg"
-              alt="Sadam Hussein Law Office"
-              className="h-14 w-auto"
-            />
-          </div>
 
           {/* Desktop Navigation - Centered */}
+          {/* Logo */}
+          <div className="flex items-center justify-center space-x-1 bg-brand-gold-500/20 backdrop-blur-md shadow-lg border border-brand-gold-500/30 rounded-md px-4 py-1">
+            <div className="flex-shrink-0">
+              <img
+                src="/placeholder-logo.svg"
+                alt="Sadam Hussein Law Office"
+                className="h-14 w-auto"
+              />
+            </div>
+          </div>
           <div className="hidden md:flex justify-center flex-1 px-8">
-            <div className="flex items-center justify-center space-x-1 bg-brand-gold-500/20 backdrop-blur-md shadow-lg border border-brand-gold-500/30 rounded-full px-4 py-1">
+            <div className="flex items-center justify-center space-x-1 bg-brand-gold-500/20 backdrop-blur-md shadow-lg border border-brand-gold-500/30 rounded-md px-4 py-1">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
@@ -84,27 +79,29 @@ export function Navigation() {
           {/* Language Toggle and Theme Toggle */}
           <div className="flex items-center space-x-2">
             {/* Language Toggle */}
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={toggleLanguage}
-              className="text-brand-navy-800 dark:text-brand-gold-100 hover:bg-brand-gold-100 dark:hover:bg-brand-navy-800 rounded-md p-3 flex items-center space-x-1"
-            >
-              <Globe className="h-4 w-4" />
-              <span className="text-xs font-medium">{currentLanguage}</span>
-            </Button>
+            <div className="flex items-center justify-center space-x-1 bg-brand-gold-500/20 backdrop-blur-md shadow-lg border border-brand-gold-500/30 rounded-md px-4 py-1">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={toggleLanguage}
+                className="text-brand-navy-800 dark:text-brand-gold-100 hover:bg-brand-gold-100 dark:hover:bg-brand-navy-800 rounded-md p-3 flex items-center space-x-1"
+              >
+                <Globe className="h-4 w-4" />
+                <span className="text-xs font-medium">{currentLanguage}</span>
+              </Button>
 
-            {/* Theme Toggle */}
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="text-brand-navy-800 dark:text-brand-gold-100 hover:bg-brand-gold-100 dark:hover:bg-brand-navy-800 rounded-md p-3"
-            >
-              <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-              <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-              <span className="sr-only">Toggle theme</span>
-            </Button>
+              {/* Theme Toggle */}
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="text-brand-navy-800 dark:text-brand-gold-100 hover:bg-brand-gold-100 dark:hover:bg-brand-navy-800 rounded-md p-3"
+              >
+                <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                <span className="sr-only">Toggle theme</span>
+              </Button>
+            </div>
 
             {/* Mobile Navigation */}
             <div className="md:hidden">

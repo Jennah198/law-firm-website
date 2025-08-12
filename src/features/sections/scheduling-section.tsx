@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Calendar, Clock, Users, CheckCircle, Star } from "lucide-react"
+import { CheckCircle } from "lucide-react"
 
 export function SchedulingSection() {
   const [isCalendlyLoaded, setIsCalendlyLoaded] = useState(false)
@@ -54,9 +54,9 @@ export function SchedulingSection() {
           </h2>
           <div className="w-24 h-1 bg-brand-gold-500 mx-auto mb-6"></div>
           <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            Get direct access to our experienced legal professionals for a focused consultation. 
-            Whether you need guidance on a legal matter, want to understand your options, or 
-            need immediate advice, our 20-minute sessions provide the perfect opportunity to 
+            Get direct access to our experienced legal professionals for a focused consultation.
+            Whether you need guidance on a legal matter, want to understand your options, or
+            need immediate advice, our 20-minute sessions provide the perfect opportunity to
             connect with experts who can help you navigate your legal challenges.
           </p>
         </div>
@@ -68,8 +68,8 @@ export function SchedulingSection() {
               <h3 className="text-2xl font-bold text-brand-gold-400 mb-8">What You Can Expect</h3>
               <div className="space-y-6">
                 <p className="text-gray-300 leading-relaxed text-lg">
-                  Our 20-minute consultation sessions are designed to provide you with immediate, 
-                  actionable legal guidance. During your session, you'll have the opportunity to:
+                  Our 20-minute consultation sessions are designed to provide you with immediate,
+                  actionable legal guidance. During your session, you&apos;ll have the opportunity to:
                 </p>
                 <ul className="space-y-5 text-gray-300">
                   <li className="flex items-start space-x-4">
@@ -180,10 +180,10 @@ export function SchedulingSection() {
               <h3 className="text-2xl font-bold text-brand-gold-400 mb-3">Book Your Session</h3>
               <p className="text-gray-300 text-lg">Select a convenient time for your consultation</p>
             </div>
-            
+
             {isCalendlyLoaded ? (
-              <div 
-                className="calendly-inline-widget" 
+              <div
+                className="calendly-inline-widget"
                 data-url="https://calendly.com/your-calendly-link/20min-consultation"
                 style={{ minWidth: '100%', height: '500px' }}
               />

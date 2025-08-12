@@ -145,7 +145,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
 ]
 
 // Contact Information
-export const CONTACT_INFO: ContactInfo[] = [
+export const CONTACT_INFO = [
   {
     icon: Phone,
     title: "Phone",
@@ -201,7 +201,7 @@ export const FAQ_ITEMS: FAQItem[] = [
 ]
 
 // Testimonials Data
-export const TESTIMONIALS: Testimonial[] = [
+export const TESTIMONIALS = [
   {
     name: "John Smith",
     title: "CEO, TechCorp Inc.",
@@ -226,7 +226,7 @@ export const TESTIMONIALS: Testimonial[] = [
 ]
 
 // Partners Data
-export const PARTNERS: Partner[] = [
+export const PARTNERS = [
   {
     name: "LegalTech Solutions",
     logo: "/placeholder-logo.svg",
@@ -248,7 +248,7 @@ export const PARTNERS: Partner[] = [
 ]
 
 // Insights/Blog Data
-export const INSIGHTS: Insight[] = [
+export const INSIGHTS = [
   {
     title: "Recent Changes in Employment Law",
     excerpt: "Understanding the latest updates to employment regulations and their impact on businesses and employees.",

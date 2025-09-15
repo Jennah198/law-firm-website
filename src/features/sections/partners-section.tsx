@@ -5,37 +5,43 @@ import { Card, CardContent } from "@/components/ui/card"
 
 const partners = [
   {
-    name: "Legal Associates Inc.",
+    name: "Capital & Compliance Insights",
     logo: "/placeholder-logo.svg?height=80&width=80",
     description:
-      "Leading corporate law specialists with over 25 years of experience in mergers, acquisitions, and business restructuring.",
+      "This service is tailored to guide organizations through the complexities of corporate governance and investment. SHLO’s dedicated team will help you design governance structures that attract sustainable investment and drive long-term financial success, while ensuring robust legal and regulatory compliance.",
     expertise: "Corporate Law, M&A, Business Strategy",
   },
   {
-    name: "Justice Partners",
+    name: "Legal Strategy & Investment Insights",
     logo: "/placeholder-logo.svg?height=80&width=80",
     description:
-      "Premier litigation firm known for handling complex civil disputes and achieving favorable outcomes for clients.",
+      "Our legal representation services extend well beyond courtroom appearances, encapsulating the entire lifecycle of legal disputes and proceedings. We are dedicated to managing every phase from initial case preparation to post-judgment services while ensuring effective advocacy across courts, administrative tribunals, arbitration panels, and other legal forums.",
     expertise: "Civil Litigation, Dispute Resolution",
   },
   {
-    name: "Corporate Legal Group",
+    name: "Corporate & Investment Law Watch",
     logo: "/placeholder-logo.svg?height=80&width=80",
     description:
-      "Comprehensive business legal services including compliance, contracts, and intellectual property protection.",
+      "Staying compliant in a rapidly changing regulatory environment is critical. SHLO partners with you to develop and implement rigorous internal control systems and compliance frameworks that safeguard your operations and strategic interests. ",
     expertise: "Business Law, IP, Compliance",
   },
   {
-    name: "Metro Legal Services",
+    name: "Investor & Legal Brief",
     logo: "/placeholder-logo.svg?height=80&width=80",
     description:
-      "Full-service law firm specializing in real estate transactions, property law, and commercial leasing.",
+      "Continuous education is essential in a rapidly evolving legal environment. SHLO’s legal training programs are designed for both legal professionals and non-lawyers, ensuring the dissemination of up-to-date knowledge and best practices. ",
     expertise: "Real Estate, Property Law",
   },
   {
-    name: "Professional Law Alliance",
+    name: "Corporate Governance Insights",
     logo: "/placeholder-logo.svg?height=80&width=80",
-    description: "Expert employment law attorneys providing comprehensive workplace legal solutions and HR consulting.",
+    description: "Our legal consulting services enable clients to navigate complex legal landscapes with confidence. By providing proactive advice and developing customized legal solutions, we help you align your business operations with evolving legal requirements.",
+    expertise: "Employment Law, HR Consulting",
+  },
+   {
+    name: "The Corporate Counsel Journal",
+    logo: "/placeholder-logo.svg?height=80&width=80",
+    description: "Precision and timeliness are at the core of our legal documents preparation and submission services. SHLO is committed to drafting impeccable documents and ensuring that they are effectively packaged and submitted per regulatory requirements.",
     expertise: "Employment Law, HR Consulting",
   },
 ]
@@ -53,7 +59,7 @@ export function PartnersSection() {
           </p>
         </div>
 
-        <div className="flex justify-center gap-8 overflow-x-auto pb-4">
+<div className="flex justify-center gap-8 overflow-x-auto pb-4">
           {partners.map((partner, index) => (
             <Card
               key={index}
@@ -89,7 +95,7 @@ export function PartnersSection() {
                 ) : (
                   // Collapsed state
                   <div className="h-full flex flex-col items-center">
-                    <div className="flex justify-center mt-6 mb-8">
+                    <div className="flex justify-center mt-0 mb-14">
                       <div className="w-18 h-18 rounded-full bg-brand-gold-200 flex items-center justify-center overflow-hidden">
                         <img
                           src={partner.logo || "/placeholder.svg"}

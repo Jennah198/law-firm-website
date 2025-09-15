@@ -6,6 +6,7 @@
   :root {
     --background: 0 0% 100%;
     --foreground: 210 40% 15%;
+    --secondary-dark: 210 40% 20%; /* Darker Navy for hover states */
     --card: 0 0% 100%;
     --card-foreground: 210 40% 15%;
     --popover: 0 0% 100%;
@@ -53,6 +54,7 @@
     --card-foreground: 0 0% 95%;
     --popover: 210 40% 10%;
     --popover-foreground: 0 0% 95%;
+    --secondary-dark: 210 40% 25%; /* Darker Navy for hover states in dark mode */
     --primary: 35 35% 52%;
     /* #b48d55 */
     --primary-foreground: 210 40% 8%;

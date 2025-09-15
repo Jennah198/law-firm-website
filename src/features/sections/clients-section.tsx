@@ -51,12 +51,12 @@ export function ClientsSection() {
           </p>
         </div>
 
-        {/* Clients Grid - 2 rows, 3 clients each */}
+{/* Clients Grid - 2 rows, 3 clients each */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {clients.slice(0, 3).map((client, index) => (
             <div
               key={index}
-              className={`${index === 1 ? "overflow-hidden" : ""}`}
+              className={index === 1 ? "overflow-hidden" : ""}
               style={index === 1 ? { transform: "rotate(-5deg)" } : {}}
             >
               <Card className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-0 shadow-md bg-white rounded-xl">

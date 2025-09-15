@@ -1,15 +1,17 @@
+import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 
 export function InsightsSection() {
   const insights = [
     {
-      title: "Understanding Corporate Compliance in 2024",
+      title: "Ethiopia begins selling stakes in state-owned company",
       description:
         "Navigate the evolving landscape of corporate compliance with our comprehensive guide covering new regulations, best practices, and strategic approaches to ensure your business stays ahead of legal requirements while maintaining operational efficiency.",
       image: "/placeholder.svg?height=200&width=300&text=Legal+Compliance",
       category: "Corporate Law",
       readTime: "5 min read",
+      link: "/insights/ethiopia-company-stakes",
     },
     {
       title: "Employment Law Updates: What Employers Need to Know",
@@ -18,6 +20,7 @@ export function InsightsSection() {
       image: "/placeholder.svg?height=200&width=300&text=Employment+Law",
       category: "Employment Law",
       readTime: "7 min read",
+      link: "/insights/employment-law-updates",
     },
     {
       title: "Real Estate Transactions: A Complete Legal Framework",
@@ -26,6 +29,7 @@ export function InsightsSection() {
       image: "/placeholder.svg?height=200&width=300&text=Real+Estate",
       category: "Real Estate Law",
       readTime: "6 min read",
+      link: "/insights/real-estate-framework",
     },
   ]
 
@@ -53,7 +57,7 @@ export function InsightsSection() {
           {insights.map((insight, index) => (
             <Card
               key={index}
-              className="group hover:bg-brand-navy-800 hover:text-white transition-all duration-300 hover:-translate-y-1 border-0 shadow-md bg-white rounded-xl cursor-pointer"
+              className="border-0 shadow-md bg-white rounded-xl cursor-pointer transition-all duration-300"
             >
               <CardContent className="p-6">
                 {/* Rectangular Image */}
@@ -75,27 +79,29 @@ export function InsightsSection() {
                 {/* Content */}
                 <div className="text-left">
                   <div className="flex items-center justify-between mb-3">
-                    <span className="text-sm text-brand-navy-600 group-hover:text-brand-gold-200">
+                    <span className="text-sm text-brand-navy-600">
                       {insight.readTime}
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-semibold text-brand-navy-800 group-hover:text-white mb-3 leading-tight">
+                  <h3 className="text-xl font-semibold text-brand-navy-800 mb-3 leading-tight">
                     {insight.title}
                   </h3>
 
-                  <p className="text-brand-navy-700 group-hover:text-brand-gold-100 leading-relaxed text-sm mb-6">
+                  <p className="text-brand-navy-700 leading-relaxed text-sm mb-6">
                     {insight.description}
                   </p>
 
-                  {/* Read More Button */}
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="border-2 border-brand-gold-400 text-brand-gold-600 hover:bg-brand-gold-50 group-hover:border-white group-hover:text-white group-hover:bg-transparent px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 bg-transparent"
-                  >
-                    Read More
-                  </Button>
+                  {/* Read More Link Button with its own hover */}
+                  <Link href={insight.link}>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="border-2 border-brand-gold-400 text-brand-gold-600 hover:bg-brand-navy-800 hover:text-white hover:border-brand-navy-800 px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 bg-transparent"
+                    >
+                      Read More
+                    </Button>
+                  </Link>
                 </div>
               </CardContent>
             </Card>

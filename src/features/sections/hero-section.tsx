@@ -1,39 +1,91 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
+import { Phone } from "lucide-react"
+import Image from "next/image"
+import Link from "next/link"
 
 export function HeroSection() {
   return (
-    <section
-      id="home"
-      className="min-h-screen bg-gradient-to-br from-brand-gold-50 to-brand-navy-50 dark:from-brand-navy-950 dark:to-brand-gold-950 flex items-center"
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="max-w-4xl">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-brand-navy-900 dark:text-brand-gold-100 leading-tight mb-8">
-            Justice Begins
-            <br />
-            With <span className="text-brand-gold-500">Knowledge</span>
-          </h1>
+    <section className="relative h-screen flex items-center justify-center">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/construction.jpg?height=1080&width=1920&text=Professional+Law+Office+Background"
+          alt="Hero Background"
+          fill
+          className="object-cover"
+          priority
+        />
+      </div>
 
-          <p className="text-brand-navy-700 dark:text-brand-navy-200 text-lg lg:text-xl leading-relaxed max-w-2xl mb-10">
-            Explore a rigorous legal education grounded in ethics, driven by innovation, and designed to create
-            real-world impact. Join a community of future legal leaders committed to justice, critical thinking, and
-            transformative change in society.
-          </p>
+      {/* Content */}
+      <div className="container mx-auto px-4 z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center justify-center max-w-6xl mx-auto">
+          {/* Left Column - Text Content */}
+          <div className="space-y-4 text-center md:text-left">
+            <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold leading-tight">
+              <span className="text-[hsl(var(--secondary))]">Legal Solution for</span>
+              <br />
+              <span className="text-[hsl(var(--primary))]">Corporate</span>
+              <span className="text-[hsl(var(--secondary))]"> &</span>
+              <br />
+              <span className="text-[hsl(var(--primary))]">Investment.</span>
+            </h1>
 
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Button
-              variant="outline"
-              size="lg"
-              className="border-2 border-brand-gold-500 text-brand-gold-600 hover:bg-brand-gold-50 dark:hover:bg-brand-gold-900/20 px-8 py-6 rounded-lg bg-transparent text-base font-medium text-left"
-            >
-              Book online consultation
-            </Button>
-            <Button
-              size="lg"
-              className="bg-brand-navy-900 hover:bg-brand-navy-800 dark:bg-brand-gold-500 dark:hover:bg-brand-gold-600 dark:text-brand-navy-900 text-white px-8 py-6 rounded-lg text-base font-medium text-left"
-            >
-              Contact us
-            </Button>
+            <p className="text-lg text-gray-700 max-w-xl mx-auto md:mx-0">
+              Ethiopia's premier corporate law firm 
+              <br />
+              providing comprehensive legal 
+              <br />
+              solutions with
+              <span className="text-[hsl(var(--primary))] font-semibold">
+                {" "}unmatched 
+                <br />
+                expertise
+              </span>{" "}
+              and
+              <span className="text-[hsl(var(--primary))] font-semibold">
+                {" "}proven results.
+              </span>
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start pt-4">
+              {/* Primary Button - Link to Contact Page */}
+              <Link 
+                href="/scheduling-section">
+                <Button
+                  size="lg"
+                  className="rounded-md text-white font-medium bg-[hsl(var(--secondary))] hover:bg-[hsl(var(--secondary-dark))]"
+                >
+                  Book a Consultation
+                </Button>
+              </Link>
+
+              {/* Outline Button */}
+              <Button
+                size="lg"
+                variant="outline"
+                className="rounded-md bg-transparent font-medium border-2 border-[hsl(var(--secondary))] text-[hsl(var(--secondary))] hover:bg-[hsl(var(--secondary))/0.05]"
+              >
+                <Phone className="h-4 w-4 mr-2" />
+                <a href="tel:+251913693679">
+                  Call Now: +251 91 369 3679
+                </a>
+              </Button>
+            </div>
+          </div>
+
+          {/* Right Column - Image */}
+          <div className="relative flex justify-center">
+            <div className="relative w-72 h-80 md:w-80 md:h-96">
+              <Image
+                src="/placeholder.svg?height=400&width=320&text=Professional+Lawyer"
+                alt="Professional Legal Team"
+                fill
+                className="object-cover rounded-lg shadow-2xl"
+              />
+            </div>
           </div>
         </div>
       </div>

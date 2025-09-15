@@ -1,224 +1,235 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { CheckCircle } from "lucide-react"
 
 export function SchedulingSection() {
-  const [isCalendlyLoaded, setIsCalendlyLoaded] = useState(false)
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    company: "",
+    practiceArea: "",
+    urgencyLevel: "",
+    description: ""
+  })
 
-  useEffect(() => {
-    // Load Calendly widget script
-    const script = document.createElement("script")
-    script.src = "https://assets.calendly.com/assets/external/widget.js"
-    script.async = true
-    script.onload = () => setIsCalendlyLoaded(true)
-    document.head.appendChild(script)
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }))
+  }
 
-    return () => {
-      document.head.removeChild(script)
-    }
-  }, [])
-
-  // Benefits array
-  /*
-  const benefits = [
-    {
-      icon: Clock,
-      title: "Quick 20-Minute Sessions",
-      description: "Efficient, focused consultations that respect your time while delivering maximum value."
-    },
-    {
-      icon: Users,
-      title: "Expert Legal Consultation",
-      description: "Direct access to experienced attorneys who can provide immediate guidance on your legal matters."
-    },
-    {
-      icon: CheckCircle,
-      title: "Immediate Action Plan",
-      description: "Walk away with a clear understanding of your legal options and next steps."
-    },
-    {
-      icon: Star,
-      title: "Affordable Expertise",
-      description: "Professional legal advice at an accessible price point of only 700 Birr."
-    }
-  ]
-  */
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    // Handle form submission here
+    console.log("Form submitted:", formData)
+  }
 
   return (
-    <section id="scheduling" className="py-24 bg-gradient-to-br from-brand-navy-900 via-brand-navy-800 to-brand-navy-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-20">
-          <h2 className="text-3xl lg:text-4xl font-bold text-brand-gold-400 mb-6">
-            Schedule a 20-Minute Online Meeting with Experts
+    <section id="scheduling" className="py-24 bg-[#2A3B72] text-white">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header Area */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl lg:text-5xl font-bold text-[#C5AA88] mb-6">
+            Schedule Your Legal Consultation
           </h2>
-          <div className="w-24 h-1 bg-brand-gold-500 mx-auto mb-6"></div>
-          <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            Get direct access to our experienced legal professionals for a focused consultation.
-            Whether you need guidance on a legal matter, want to understand your options, or
-            need immediate advice, our 20-minute sessions provide the perfect opportunity to
-            connect with experts who can help you navigate your legal challenges.
+          <p className="text-xl text-[#EDEDED] max-w-4xl mx-auto leading-relaxed">
+            Get expert legal advice from our experienced attorneys. Book a consultation that fits your schedule and needs.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          {/* Left Side - Consultation Details */}
-          <div className="space-y-8">
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-10 border border-white/20 shadow-xl">
-              <h3 className="text-2xl font-bold text-brand-gold-400 mb-8">What You Can Expect</h3>
-              <div className="space-y-6">
-                <p className="text-gray-300 leading-relaxed text-lg">
-                  Our 20-minute consultation sessions are designed to provide you with immediate,
-                  actionable legal guidance. During your session, you&apos;ll have the opportunity to:
-                </p>
-                <ul className="space-y-5 text-gray-300">
-                  <li className="flex items-start space-x-4">
-                    <CheckCircle className="h-6 w-6 text-brand-gold-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-lg">Present your legal situation and receive expert analysis</span>
-                  </li>
-                  <li className="flex items-start space-x-4">
-                    <CheckCircle className="h-6 w-6 text-brand-gold-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-lg">Understand your legal rights and available options</span>
-                  </li>
-                  <li className="flex items-start space-x-4">
-                    <CheckCircle className="h-6 w-6 text-brand-gold-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-lg">Receive a clear action plan tailored to your specific case</span>
-                  </li>
-                  <li className="flex items-start space-x-4">
-                    <CheckCircle className="h-6 w-6 text-brand-gold-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-lg">Get answers to your immediate legal questions</span>
-                  </li>
-                  <li className="flex items-start space-x-4">
-                    <CheckCircle className="h-6 w-6 text-brand-gold-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-lg">Learn about potential next steps and timeline expectations</span>
-                  </li>
-                </ul>
-              </div>
+        {/* What You Can Expect Box */}
+        <div className="bg-[#4B597D] rounded-xl p-10 mb-12 max-w-4xl mx-auto">
+          <h3 className="text-2xl font-bold text-[#C5AA88] text-center mb-6">
+            What You Can Expect
+          </h3>
+          <p className="text-white text-center mb-8 text-lg">
+            Our consultation sessions provide you with immediate, actionable legal guidance tailored to your specific needs.
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="flex items-start space-x-4">
+              <CheckCircle className="h-6 w-6 text-orange-500 mt-0.5 flex-shrink-0" />
+              <span className="text-white text-lg">Present your business or investment situation and receive expert analysis</span>
             </div>
-
-            {/* Session Highlights*/}
-            {/*
-            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10">
-              <h4 className="text-xl font-semibold text-brand-gold-400 mb-6">Session Highlights</h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="flex items-center space-x-3">
-                  <div className="p-2 bg-brand-gold-400/20 rounded-lg">
-                    <Clock className="h-5 w-5 text-brand-gold-400" />
-                  </div>
-                  <div>
-                    <p className="text-brand-gold-300 font-medium">20 Minutes</p>
-                    <p className="text-gray-400 text-sm">Focused consultation</p>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="p-2 bg-brand-gold-400/20 rounded-lg">
-                    <Users className="h-5 w-5 text-brand-gold-400" />
-                  </div>
-                  <div>
-                    <p className="text-brand-gold-300 font-medium">Expert Lawyers</p>
-                    <p className="text-gray-400 text-sm">Direct consultation</p>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="p-2 bg-brand-gold-400/20 rounded-lg">
-                    <CheckCircle className="h-5 w-5 text-brand-gold-400" />
-                  </div>
-                  <div>
-                    <p className="text-brand-gold-300 font-medium">Action Plan</p>
-                    <p className="text-gray-400 text-sm">Clear next steps</p>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="p-2 bg-brand-gold-400/20 rounded-lg">
-                    <Star className="h-5 w-5 text-brand-gold-400" />
-                  </div>
-                  <div>
-                    <p className="text-brand-gold-300 font-medium">Affordable</p>
-                    <p className="text-gray-400 text-sm">700 Birr only</p>
-                  </div>
-                </div>
-              </div>
+            <div className="flex items-start space-x-4">
+              <CheckCircle className="h-6 w-6 text-orange-500 mt-0.5 flex-shrink-0" />
+              <span className="text-white text-lg">Receive a clear action plan tailored to your corporate or investment case</span>
             </div>
-            */}
-
-            {/* Benefits Grid*/}
-            {/*
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {benefits.map((benefit, index) => {
-                const IconComponent = benefit.icon
-                return (
-                  <div key={index} className="bg-white/5 backdrop-blur-sm rounded-lg p-8 border border-white/10 hover:bg-white/10 transition-all duration-300">
-                    <div className="flex items-center space-x-3 mb-4">
-                      <div className="p-3 bg-brand-gold-400/20 rounded-lg">
-                        <IconComponent className="h-7 w-7 text-brand-gold-400" />
-                      </div>
-                      <h4 className="text-xl font-semibold text-brand-gold-400">{benefit.title}</h4>
-                    </div>
-                    <p className="text-gray-300 text-base leading-relaxed">{benefit.description}</p>
-                  </div>
-                )
-              })}
+            <div className="flex items-start space-x-4">
+              <CheckCircle className="h-6 w-6 text-orange-500 mt-0.5 flex-shrink-0" />
+              <span className="text-white text-lg">Understand your legal rights, obligations, and available strategic options</span>
             </div>
-            */}
-
-            {/* Pricing Highlight*/}
-            {/*<div className="bg-brand-gold-400/10 backdrop-blur-sm rounded-xl p-6 border border-brand-gold-400/30">
-              <div className="text-center">
-                <div className="flex items-center justify-center space-x-2 mb-2">
-                  <Calendar className="h-6 w-6 text-brand-gold-400" />
-                  <span className="text-2xl font-bold text-brand-gold-400">700 Birr</span>
-                </div>
-                <p className="text-gray-300 text-sm">One-time consultation fee</p>
-                <p className="text-brand-gold-300 text-xs mt-1">No hidden fees • No commitment required</p>
-              </div>
-            </div>*/}
-          </div>
-
-          {/* Right Side - Calendly Widget */}
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-10 border border-white/20 shadow-xl">
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold text-brand-gold-400 mb-3">Book Your Session</h3>
-              <p className="text-gray-300 text-lg">Select a convenient time for your consultation</p>
+            <div className="flex items-start space-x-4">
+              <CheckCircle className="h-6 w-6 text-orange-500 mt-0.5 flex-shrink-0" />
+              <span className="text-white text-lg">Get answers to urgent legal questions affecting your transactions or operations</span>
             </div>
-
-            {isCalendlyLoaded ? (
-              <div
-                className="calendly-inline-widget"
-                data-url="https://calendly.com/your-calendly-link/20min-consultation"
-                style={{ minWidth: '100%', height: '500px' }}
-              />
-            ) : (
-              <div className="flex items-center justify-center h-96">
-                <div className="text-center">
-                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand-gold-400 mx-auto mb-4"></div>
-                  <p className="text-gray-300">Loading scheduling widget...</p>
-                </div>
-              </div>
-            )}
           </div>
         </div>
 
-        {/* Additional Information - Commented Out */}
-        {/*<div className="mt-16 text-center">
-          <div className="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10">
-            <h3 className="text-xl font-semibold text-brand-gold-400 mb-4">Important Information</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-gray-300">
-              <div>
-                <h4 className="font-semibold text-brand-gold-300 mb-2">Preparation</h4>
-                <p>Please have your legal documents and questions ready for the most productive session.</p>
-              </div>
-              <div>
-                <h4 className="font-semibold text-brand-gold-300 mb-2">Technology</h4>
-                <p>Meetings are conducted via secure video conferencing. A stable internet connection is required.</p>
-              </div>
-              <div>
-                <h4 className="font-semibold text-brand-gold-300 mb-2">Confidentiality</h4>
-                <p>All consultations are strictly confidential and protected by attorney-client privilege.</p>
-              </div>
-            </div>
+        {/* Book Your Session Form Box */}
+        <div className="bg-[#4B597D] rounded-xl p-10 max-w-xl mx-auto">
+          <div className="text-center mb-2">
+            <h3 className="text-2xl font-bold text-[#C5AA88] mb-3">
+              Book Your Session
+            </h3>
+            <p className="text-[#EDEDED] text-lg">
+              Select a convenient time for your consultation
+            </p>
           </div>
-        </div>*/}
+
+          {/* Form */}
+          <div className="bg-white rounded-xl p-8 shadow-lg">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Row 1: First Name + Last Name */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="relative">
+                  <input
+                    type="text"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full p-3 pt-6 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#2A3B72] peer"
+                    placeholder=" "
+                  />
+                  <label className="absolute left-3 top-2 text-sm text-gray-500 transition-all duration-200 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-gray-500">
+                    First Name 
+                  </label>
+                </div>
+                <div className="relative">
+                  <input
+                    type="text"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full p-3 pt-6 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#2A3B72] peer"
+                    placeholder=" "
+                  />
+                  <label className="absolute left-3 top-2 text-sm text-gray-500 transition-all duration-200 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-gray-500">
+                    Last Name 
+                  </label>
+                </div>
+              </div>
+
+              {/* Row 2: Email + Phone */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="relative">
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full p-3 pt-6 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#2A3B72] peer"
+                    placeholder=" "
+                  />
+                  <label className="absolute left-3 top-2 text-sm text-gray-500 transition-all duration-200 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-gray-500">
+                    Email Address 
+                  </label>
+                </div>
+                <div className="relative">
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full p-3 pt-6 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#2A3B72] peer"
+                    placeholder=" "
+                  />
+                  <label className="absolute left-3 top-2 text-sm text-gray-500 transition-all duration-200 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-gray-500">
+                    Phone Number 
+                  </label>
+                </div>
+              </div>
+
+              {/* Row 3: Company */}
+              <div className="relative">
+                <input
+                  type="text"
+                  name="company"
+                  value={formData.company}
+                  onChange={handleInputChange}
+                  className="w-full p-3 pt-6 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#2A3B72] peer"
+                  placeholder=" "
+                />
+                <label className="absolute left-3 top-2 text-sm text-gray-500 transition-all duration-200 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-gray-500">
+                  Company/Organization (Optional)
+                </label>
+              </div>
+
+              {/* Row 4: Practice Area + Urgency Level */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="relative">
+                  <select
+                    name="practiceArea"
+                    value={formData.practiceArea}
+                    onChange={handleInputChange}
+                    className="w-full p-3 pt-6 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#2A3B72] peer"
+                  >
+                    <option value="">Select practice area</option>
+                    <option value="corporate">Corporate Law</option>
+                    <option value="investment">Investment Law</option>
+                    <option value="commercial">Commercial Law</option>
+                    <option value="real-estate">Real Estate Law</option>
+                    <option value="employment">Employment Law</option>
+                    <option value="other">Other</option>
+                  </select>
+                  <label className="absolute left-3 top-2 text-sm text-gray-500 transition-all duration-200 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-gray-500">
+                  </label>
+                </div>
+                <div className="relative">
+                  <select
+                    name="urgencyLevel"
+                    value={formData.urgencyLevel}
+                    onChange={handleInputChange}
+                    className="w-full p-3 pt-6 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#2A3B72] peer"
+                  >
+                    <option value="">Select urgency level</option>
+                    <option value="low">Low - Within 2 weeks</option>
+                    <option value="medium">Medium - Within 1 week</option>
+                    <option value="high">High - Within 3 days</option>
+                    <option value="urgent">Urgent - Within 24 hours</option>
+                  </select>
+                  <label className="absolute left-3 top-2 text-sm text-gray-500 transition-all duration-200 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-gray-500">
+                  </label>
+                </div>
+              </div>
+
+              {/* Row 5: Description */}
+              <div className="relative">
+                <textarea
+                  name="description"
+                  value={formData.description}
+                  onChange={handleInputChange}
+                  rows={4}
+                  className="w-full p-3 pt-6 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#2A3B72] peer resize-none"
+                  placeholder=" "
+                />
+                <label className="absolute left-3 top-2 text-sm text-gray-500 transition-all duration-200 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-gray-500">
+                  Brief Description of Your Legal Matter
+                </label>
+              </div>
+
+            </form>
+          </div>
+          {/* Submit Button */}
+            <div className="text-center pt-4">
+                <button
+                  type="submit"
+                  className="bg-brand-navy-300 text-[#2A3B72] font-bold py-4 px-8 rounded-lg hover:bg-[#1e2a5a] hover: text-white transition-all duration-300 shadow-lg"
+                >
+                  Book consultation
+                </button>
+              </div>
+        </div>
       </div>
     </section>
   )
-} 
+}

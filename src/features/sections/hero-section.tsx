@@ -13,6 +13,9 @@ export function HeroSection() {
         <Image
           src="/construction.jpg?height=1080&width=1920&text=Professional+Law+Office+Background"
           alt="Hero Background"
+          style={{
+                filter: 'blur(2px) brightness(0.9)', // Blur + dim effect
+                }}
           fill
           className="object-cover"
           priority
@@ -80,7 +83,7 @@ export function HeroSection() {
           <div className="relative flex justify-center">
             <div className="relative w-72 h-80 md:w-80 md:h-96">
               <Image
-                src="/placeholder.svg?height=400&width=320&text=Professional+Lawyer"
+                src="/shOfficeFront.jpg?height=400&width=320&text=Professional+Lawyer"
                 alt="Professional Legal Team"
                 fill
                 className="object-cover rounded-lg shadow-2xl"

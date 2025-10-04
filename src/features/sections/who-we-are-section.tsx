@@ -39,7 +39,7 @@ export function WhoWeAreSection() {
               <CardContent className="p-0">
                 <div className="aspect-[4/3] bg-gradient-to-br from-[hsl(var(--primary))]/10 to-[hsl(var(--secondary))]/10 flex items-center justify-center">
                   <img
-                    src="/sadam-office.jpg?height=100&width=300"
+                    src="/shOfficeRight.jpg?height=100&width=300"
                     alt="Professional law firm team"
                     className="w-full h-full object-cover"
                   />

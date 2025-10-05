@@ -68,7 +68,7 @@ const PracticeAreaCard: FC<PracticeAreaCardProps> = ({ badge, subheading, descri
           Call now: +251 91 369 3679
         </Link>
         <p className="text-[#333333] text-center max-w-2xl mx-auto">
-          Contact us today to ensure your business operations align perfectly with Ethiopia's dynamic corporate environment.
+          Contact us today to ensure your business operations align perfectly with Ethiopia&apos;s dynamic corporate environment.
         </p>
       </div>
     </div>
@@ -100,7 +100,7 @@ export function PracticeAreas() {
             Unlocking Opportunities with Strategic Legal Support
           </p>
           <p className="text-lg text-[#333333] max-w-4xl mx-auto leading-relaxed">
-            At SHLO Law Office, we provide expert legal solutions tailored to Ethiopia's evolving regulatory and business
+            At SHLO Law Office, we provide expert legal solutions tailored to Ethiopia&apos;s evolving regulatory and business
             landscape. Our multidisciplinary services ensure investors, businesses, and organizations achieve growth
             while staying fully compliant with local and international standards.
           </p>

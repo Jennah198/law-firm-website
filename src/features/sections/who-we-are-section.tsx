@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card"
 import Link from "next/link"
+import Image from "next/image"
 
 export function WhoWeAreSection() {
   return (
@@ -38,10 +39,12 @@ export function WhoWeAreSection() {
             <Card className="overflow-hidden shadow-lg rounded-xl">
               <CardContent className="p-0">
                 <div className="aspect-[4/3] bg-gradient-to-br from-[hsl(var(--primary))]/10 to-[hsl(var(--secondary))]/10 flex items-center justify-center">
-                  <img
-                    src="/shOfficeRight.jpg?height=100&width=300"
-                    alt="Professional law firm team"
-                    className="w-full h-full object-cover"
+                  <Image
+                      src="/shOfficeRight.jpg"
+                      alt="Professional law firm team"
+                      width={300}
+                      height={100}
+                      className="w-full h-full object-cover"
                   />
                 </div>
               </CardContent>

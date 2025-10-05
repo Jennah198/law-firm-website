@@ -1,7 +1,7 @@
 // Analytics utility for performance monitoring
-export const trackEvent = (eventName: string, properties?: Record<string, any>) => {
+export const trackEvent = (event: string, properties?: Record<string, unknown>) => {
   if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('event', eventName, properties)
+    window.gtag('event', event, properties)
   }
 }
 

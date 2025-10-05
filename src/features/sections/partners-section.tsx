@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
+import Image from "next/image"
 
 const partners = [
   {
@@ -78,9 +79,11 @@ export function PartnersSection() {
                   <div className="p-6 h-full flex flex-col">
                     <div className="flex justify-center mb-6">
                       <div className="w-20 h-20 rounded-full bg-brand-gold-100 flex items-center justify-center overflow-hidden">
-                        <img
+                        <Image
                           src={partner.logo || "/placeholder.svg"}
                           alt={partner.name}
+                          width={64}
+                          height={64}
                           className="w-16 h-16 object-contain"
                         />
                       </div>
@@ -97,9 +100,11 @@ export function PartnersSection() {
                   <div className="h-full flex flex-col items-center">
                     <div className="flex justify-center mt-0 mb-14">
                       <div className="w-18 h-18 rounded-full bg-brand-gold-200 flex items-center justify-center overflow-hidden">
-                        <img
+                        <Image
                           src={partner.logo || "/placeholder.svg"}
                           alt={partner.name}
+                          width={48}
+                          height={48}
                           className="w-12 h-12 object-contain"
                         />
                       </div>

@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 
 export function InsightsSection() {
   const insights = [
@@ -63,9 +64,11 @@ export function InsightsSection() {
                 {/* Rectangular Image */}
                 <div className="relative mb-6">
                   <div className="w-full h-48 rounded-lg overflow-hidden shadow-lg">
-                    <img
+                    <Image
                       src={insight.image || "/placeholder.svg"}
                       alt={insight.title}
+                      width={300}
+                      height={200}
                       className="w-full h-full object-cover"
                     />
                   </div>

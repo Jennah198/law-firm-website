@@ -11,7 +11,7 @@ export function HeroSection() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/construction.jpg?height=1080&width=1920&text=Professional+Law+Office+Background"
+          src="/construction.jpg"
           alt="Hero Background"
           style={{
                 filter: 'blur(2px) brightness(0.9)', // Blur + dim effect
@@ -37,7 +37,7 @@ export function HeroSection() {
             </h1>
 
             <p className="text-lg text-gray-700 max-w-xl mx-auto md:mx-0">
-              Ethiopia's premier corporate law firm 
+              Ethiopia&apos;s premier corporate law firm 
               <br />
               providing comprehensive legal 
               <br />
@@ -83,7 +83,7 @@ export function HeroSection() {
           <div className="relative flex justify-center">
             <div className="relative w-72 h-80 md:w-80 md:h-96">
               <Image
-                src="/shOfficeFront.jpg?height=400&width=320&text=Professional+Lawyer"
+                src="/shOfficeFront.jpg"
                 alt="Professional Legal Team"
                 fill
                 className="object-cover rounded-lg shadow-2xl"

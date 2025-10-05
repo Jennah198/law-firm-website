@@ -26,7 +26,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
     console.error('ErrorBoundary caught an error:', error, errorInfo)
-    
+
     // Track error in analytics
     if (typeof window !== 'undefined') {
       // You can add error tracking here
@@ -59,7 +59,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
               Something went wrong
             </h2>
             <p className="text-gray-600 mb-6">
-              We're sorry, but something unexpected happened. Please try refreshing the page.
+              Wer&apos;e sorry, but something unexpected happened. Please try refreshing the page.
             </p>
             <div className="space-y-3">
               <Button

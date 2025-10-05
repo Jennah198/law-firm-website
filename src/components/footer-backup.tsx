@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from "lucide-react"
+import Image from "next/image"
 
 const quickLinks = [
   { name: "Home", href: "#home" },
@@ -30,7 +31,7 @@ export function Footer() {
           {/* Company Info */}
           <div className="lg:col-span-2">
             <div className="flex items-center mb-4">
-              <img
+              <Image
                 src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sadam%20hussen%20logo.jpg-ZqKo3iDJZ7tidvdqM52DLlCsZ2dA5c.jpeg"
                 alt="Sadam Hussein Law Office"
                 className="h-16 w-auto mr-4"

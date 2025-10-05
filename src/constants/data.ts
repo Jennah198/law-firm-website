@@ -1,4 +1,4 @@
-import { NavItem, Service, TeamMember, ContactInfo, FAQItem, Testimonial, Partner, Insight } from '@/types'
+import { NavItem, Service, TeamMember, FAQItem } from '@/types'
 import { Scale, Users, FileText, Shield, Briefcase, Home, Phone, Mail, MapPin, Clock } from 'lucide-react'
 
 // Navigation Items

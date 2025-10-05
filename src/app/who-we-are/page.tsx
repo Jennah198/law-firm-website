@@ -1,4 +1,3 @@
-import Image from "next/image"
 import { ContactSection } from "@/features/sections/contact-section"
 import { Footer } from "@/components/footer"
 

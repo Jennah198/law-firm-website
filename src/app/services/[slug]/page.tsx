@@ -3,10 +3,12 @@ import { SERVICES_DATA } from "@/lib/services-data"
 import { ContactSection } from "@/features/sections/contact-section"
 import { Footer } from "@/components/footer"
 
-type Params = { params: { slug: string } }
+type Params = { params: Promise<{ slug: string }> }
 
-export default function ServiceDetailPage({ params }: Params) {
-  const service = SERVICES_DATA.find((s) => s.slug === params.slug)
+export default async function ServiceDetailPage({ params }: Params) {
+  const { slug } = await params; // Add 'await' here
+  const service = SERVICES_DATA.find((s) => s.slug === slug) // Use 'slug' instead of 'params.slug'
+  
   if (!service) return notFound()
 
   return (

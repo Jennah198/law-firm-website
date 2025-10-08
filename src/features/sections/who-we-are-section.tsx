@@ -1,4 +1,4 @@
-import { Card, CardContent } from "@/components/ui/card"
+//import { Card, CardContent } from "@/components/ui/card"
 import Link from "next/link"
 import Image from "next/image"
 
@@ -23,7 +23,7 @@ export function WhoWeAreSection() {
               transactions, Nonprofit law, and alternative dispute resolution in Ethiopia.
               <br />
               <br />
-              SHLO serves a diverse clientele, including individual investors, start-ups, government entities, and multinational corporations. Committed to delivering the highest standard of legal services by fostering a personalized environment where mutual trust is built, clients' objectives, professionalism and excellence are thoroughly understood.
+              SHLO serves a diverse clientele, including individual investors, start-ups, government entities, and multinational corporations. Committed to delivering the highest standard of legal services by fostering a personalized environment where mutual trust is built, clients&apos; objectives, professionalism and excellence are thoroughly understood.
               <br />
               <br />
               We provide strategic legal solutions through an experienced legal team striving to deliver services that are underpinned by the basic pillars of professionalism and excellence.

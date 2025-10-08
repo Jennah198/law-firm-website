@@ -1,4 +1,3 @@
-//import { Card, CardContent } from "@/components/ui/card"
 import Link from "next/link"
 import Image from "next/image"
 
@@ -12,7 +11,7 @@ export function WhoWeAreSection() {
             <h2 className="text-3xl lg:text-4xl font-bold text-[hsl(var(--secondary))] mb-6">
                 Welcome to (SHLO){" "}<br />
                <span className="italic text-lg lg:text-xl font-normal">
-                 "Empowering Success with Justice: Strategic Legal Solutions for Corporate and Investment Ambitions."
+                 &quot;Empowering Success with Justice: Strategic Legal Solutions for Corporate and Investment Ambitions.&quot;
                </span>
             </h2>
             <p className="text-lg text-[hsl(var(--secondary))] mb-6 leading-relaxed">

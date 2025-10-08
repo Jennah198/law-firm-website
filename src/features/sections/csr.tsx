@@ -73,7 +73,7 @@ export default function CSRPage() {
             <p className="text-lg text-[hsl(var(--secondary))] mb-6 leading-relaxed">
               Please join me in thanking and congratulating team MLA for organizing and participating in such a momentous event.<br/><br/>
 
-              Following Prime Minister Abiy Ahmed&apos;s campaign to plant 6 billion trees across the country this year as part of the national "Green Legacy" initiative, which aims at curbing the effects of climate change and deforestation, we proudly took part in planting trees for the second time at the Millennium Park Medicinal Plant Zone.<br/><br/>
+              Following Prime Minister Abiy Ahmed&apos;s campaign to plant 6 billion trees across the country this year as part of the national &quot;Green Legacy&quot; initiative, which aims at curbing the effects of climate change and deforestation, we proudly took part in planting trees for the second time at the Millennium Park Medicinal Plant Zone.<br/><br/>
 
               Besides our annual pro bono service program in which our lawyers generously provide hundreds of unpaid hours to assist disadvantaged clients and communities, we firmly believe our commitment to a sustainable corporate and social responsibility program is vital for us, and we promise to keep on doing it.<br/><br/>
 

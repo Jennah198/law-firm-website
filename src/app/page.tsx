@@ -11,6 +11,7 @@ import { InsightsSection } from "@/features/sections/insights-section"
 import { FaqSection } from "@/features/sections/faq-section"
 import { ContactSection } from "@/features/sections/contact-section"
 import { Footer } from "@/components/footer"
+import Csr from "@/features/sections/csr"
 
 
 export default function HomePage() {
@@ -27,9 +28,10 @@ export default function HomePage() {
       <PartnersSection />
       {/*<ClientsSection />*/}
       <InsightsSection />
+      <Csr />
       <FaqSection />
       <ContactSection />
       <Footer />
-    </main>
-  )
-}
+      </main>
+      )
+    }

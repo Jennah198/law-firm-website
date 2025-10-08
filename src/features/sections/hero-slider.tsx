@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { ChevronLeft, ChevronRight, Globe, Sun } from "lucide-react"
+import { ChevronLeft, ChevronRight, Globe, Sun, Moon } from "lucide-react"
 import Image from "next/image"
 
 interface SlideData {
@@ -23,6 +23,8 @@ const slides: SlideData[] = [
 export function HeroSlider() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
+  const [isDarkMode, setIsDarkMode] = useState(false)
+  const [currentLanguage, setCurrentLanguage] = useState("En")
 
   // Auto-slide every 5 seconds
   useEffect(() => {
@@ -48,6 +50,22 @@ export function HeroSlider() {
     setIsAutoPlaying(false)
   }
 
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode)
+    // Here you would typically update the global theme state or CSS variables
+    // For now, we'll just toggle the local state
+    console.log("Theme toggled to:", !isDarkMode ? "dark" : "light")
+  }
+
+  const toggleLanguage = () => {
+    const languages = ["En", "AM", "AR"]
+    const currentIndex = languages.indexOf(currentLanguage)
+    const nextIndex = (currentIndex + 1) % languages.length
+    setCurrentLanguage(languages[nextIndex])
+    // Here you would typically update the global language state
+    console.log("Language changed to:", languages[nextIndex])
+  }
+
   return (
     <section className="relative h-screen w-full overflow-hidden">
       {/* ✅ Optimized Background Image */}
@@ -67,15 +85,34 @@ export function HeroSlider() {
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/30" />
 
-      {/* Language and Theme Toggles */}
-      <div className="absolute top-6 right-6 z-20 flex items-center space-x-4">
-        <div className="flex items-center space-x-2 bg-white/20 backdrop-blur-sm rounded-lg px-3 py-2">
+      {/* Language and Theme Toggles - UPDATED */}
+      <div className="absolute top-40 right-0 z-20 flex flex-col items-end space-y-3">
+        {/* Language Toggle Button */}
+        <button
+          onClick={toggleLanguage}
+          className="bg-[#2A3B72] hover:bg-[#1E2A5E] text-white rounded-lg px-4 py-3 
+                     flex items-center space-x-2 transition-all duration-300 
+                     shadow-lg hover:shadow-xl active:scale-95 cursor-pointer"
+          aria-label={`Change language. Current: ${currentLanguage}`}
+        >
           <Globe className="h-4 w-4 text-white" />
-          <span className="text-white text-sm font-medium">En</span>
-        </div>
-        <div className="bg-white/20 backdrop-blur-sm rounded-lg p-2">
-          <Sun className="h-4 w-4 text-white" />
-        </div>
+          <span className="text-sm font-medium">{currentLanguage}</span>
+        </button>
+
+        {/* Theme Toggle Button */}
+        <button
+          onClick={toggleTheme}
+          className="bg-[#2A3B72] hover:bg-[#1E2A5E] text-white rounded-lg p-3 
+                     transition-all duration-300 shadow-lg hover:shadow-xl 
+                     active:scale-95 cursor-pointer"
+          aria-label={`Switch to ${isDarkMode ? "light" : "dark"} mode`}
+        >
+          {isDarkMode ? (
+            <Sun className="h-4 w-4 text-white" />
+          ) : (
+            <Moon className="h-4 w-4 text-white" />
+          )}
+        </button>
       </div>
 
       {/* Navigation Arrows */}

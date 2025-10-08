@@ -56,10 +56,12 @@ export function HeroSection() {
             <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start pt-4">
               {/* Primary Button - Link to Contact Page */}
               <Link 
-                href="/scheduling-section">
+                href="/scheduling-section"
+                className="flex-1 min-w-0"
+              >
                 <Button
                   size="lg"
-                  className="rounded-md text-white font-medium bg-[hsl(var(--secondary))] hover:bg-[hsl(var(--secondary-dark))]"
+                  className="rounded-md text-white font-medium bg-[hsl(var(--secondary))] hover:bg-[hsl(var(--secondary-dark))] w-full"
                 >
                   Book a Consultation
                 </Button>
@@ -69,10 +71,10 @@ export function HeroSection() {
               <Button
                 size="lg"
                 variant="outline"
-                className="rounded-md bg-transparent font-medium border-2 border-[hsl(var(--secondary))] text-[hsl(var(--secondary))] hover:bg-[hsl(var(--secondary))/0.05]"
+                className="rounded-md bg-transparent font-medium border-2 border-[hsl(var(--secondary))] text-[hsl(var(--secondary))] hover:bg-[hsl(var(--secondary))/0.05] flex-1 min-w-0 w-full"
               >
                 <Phone className="h-4 w-4 mr-2" />
-                <a href="tel:+251913693679">
+                <a href="tel:+251913693679" className="truncate">
                   Call Now: +251 91 369 3679
                 </a>
               </Button>

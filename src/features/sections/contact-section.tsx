@@ -13,7 +13,7 @@ export function ContactSection() {
 
         {/* Body Paragraph */}
         <p className="tex-black opacity-90 leading-8 max-w-3xl mx-auto mb-5">
-          Every legal challenge is unique, and at SHLO Law Office, we are committed to tailoring our services to your specific needs. With deep expertise across a wide array of legal practice areas and strong relationships with government authorities, our strategic counsel and robust representation empower you to navigate Ethiopia's legal landscape with confidence.
+          Every legal challenge is unique, and at SHLO Law Office, we are committed to tailoring our services to your specific needs. With deep expertise across a wide array of legal practice areas and strong relationships with government authorities, our strategic counsel and robust representation empower you to navigate Ethiopia&apos;s legal landscape with confidence.
         </p>
 
         {/* Subheading / Secondary CTA */}

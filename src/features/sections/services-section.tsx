@@ -1,8 +1,19 @@
 import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
 import { SERVICES_DATA } from "@/lib/services-data"
+import Image from "next/image"
 
 export function ServicesSection() {
+  // Different placeholder images for each service
+  const placeholderImages = [
+  "/services/LegalRepresentation.jpg",
+  "/services/CorporateGovernance.jpg",
+  "/services/RiskManagement.jpg",
+  "/services/LegalTraining.jpg",
+  "/services/LegalConsulting.jpg",
+  "/services/LegalDocumentsPreparation.jpg",
+]
+
   return (
     <section
       id="services"
@@ -20,13 +31,13 @@ export function ServicesSection() {
         </p>
 
         <div className="space-y-8">
-          {SERVICES_DATA.map((svc) => (
+          {SERVICES_DATA.map((svc, index) => (
             <Card
               key={svc.slug}
               className="group transition-colors rounded-xl border border-[hsl(var(--primary))] hover:bg-[hsl(var(--secondary))] hover:border-[hsl(var(--secondary))]"
             >
               <CardContent className="p-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center min-h-[260px]">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center min-h-[180px]"> {/* Reduced height */}
                   <div>
                     <h6 className="text-base font-semibold mb-2 text-[hsl(var(--secondary))] transition-colors group-hover:text-white">
                       {svc.title}
@@ -42,8 +53,14 @@ export function ServicesSection() {
                     </Link>
                   </div>
                   <div className="md:justify-self-end">
-                    <div className="w-64 h-40 bg-[hsl(var(--muted))] border border-dashed border-[hsl(var(--border))] flex items-center justify-center">
-                      <span className="text-[hsl(var(--muted-foreground))] group-hover:text-white">Image Placeholder</span>
+                    <div className="w-64 h-32 bg-[hsl(var(--muted))] rounded-lg overflow-hidden"> {/* Reduced height */}
+                      <Image
+                        src={placeholderImages[index] || "/images/legal-service.jpg"}
+                        alt={`${svc.title} illustration`}
+                        width={256}
+                        height={128}
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                   </div>
                 </div>

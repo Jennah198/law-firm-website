@@ -4,25 +4,25 @@ import { Footer } from "@/components/footer"
 
 export default function WhoWeArePage() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-background">
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 text-justify">
           <div className="mx-auto mb-8 flex items-center justify-center">
-            <div className="relative w-64 h-40 bg-gray-100 border border-dashed border-gray-300 flex items-center justify-center overflow-hidden">
+            <div className="relative w-96 h-64 bg-muted border border-dashed border-border flex items-center justify-center overflow-hidden">
               <Image
                 src="/shOfficeFront.jpg"
                 alt="SHLO Law Office Front"
-                width={256}
-                height={160}
+                width={384}
+                height={256}
                 className="w-full h-full object-cover"
                 priority
               />
             </div>
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: "#23345b" }}>
+          <h1 className="text-3xl md:text-4xl font-bold mb-4 text-secondary text-center">
             Welcome to (SHLO)
           </h1>
-          <p className="text-lg text-gray-700 leading-relaxed">
+          <p className="text-lg text-foreground leading-relaxed">
             At SHLO, Ethiopia&apos;s premier full-service law office, we are committed to delivering strategic, high-caliber legal solutions that drive success for businesses, investors, and institutions. Founded by Sadam Hussien, our office has built a strong reputation as a trusted legal advocate, providing expert guidance and representation across a broad spectrum of practice areas.
             <br />
             <br />
@@ -36,7 +36,7 @@ export default function WhoWeArePage() {
             At SHLO, our core values—justice, excellence, integrity, and innovation—guide everything we do. We work closely with our clients to resolve legal challenges, mitigate risks, and unlock new growth opportunities, whether through regulatory compliance, investment structuring, dispute resolution, or high-stakes negotiations.
             <br />
             <br />
-            <span className="font-bold">SHLO: Empowering Success with Justice—Strategic Legal Solutions for Corporate and Investment Ambitions</span>
+            <span className="font-bold text-secondary">SHLO: Empowering Success with Justice—Strategic Legal Solutions for Corporate and Investment Ambitions</span>
           </p>
         </div>
       </section>

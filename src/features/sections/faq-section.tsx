@@ -36,28 +36,28 @@ export function FaqSection() {
     setOpenIndex(openIndex === index ? null : index)
   }
 
-return (
-    <section id="faq" className="py-20 bg-white">
+  return (
+    <section id="faq" className="py-20 bg-[hsl(var(--muted))]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-brand-navy-800 mb-6">Most Frequently Asked Questions</h2>
+          <h2 className="text-3xl lg:text-4xl font-bold text-[hsl(var(--secondary))] mb-6">Most Frequently Asked Questions</h2>
         </div>
 
-        {/* FAQ List */}
-        <div className="max-w-4xl mx-auto space-y-4">
+        {/* FAQ List - No white boxes, just horizontal lines */}
+        <div className="max-w-4xl mx-auto">
           {faqs.map((faq, index) => (
-            <div key={index} className="border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
+            <div key={index} className="border-b border-black last:border-b-0">
               <button
                 onClick={() => toggleFaq(index)}
-                className="w-full px-6 py-4 text-left bg-white hover:bg-gray-50 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-gold-600 focus:ring-opacity-50"
+                className="w-full px-6 py-6 text-left hover:bg-[hsl(var(--accent))] transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[hsl(var(--primary))] focus:ring-opacity-50"
               >
                 <div className="flex items-center justify-between">
-                  <h3 className="text-lg font-semibold text-brand-navy-800 pr-4">
+                  <h3 className="text-lg font-semibold text-[hsl(var(--secondary))] pr-4">
                     {faq.question}
                   </h3>
                   <div className="flex-shrink-0">
                     <svg
-                      className={`w-5 h-5 text-brand-navy-800 transition-transform duration-300 ${
+                      className={`w-5 h-5 text-[hsl(var(--primary))] transition-transform duration-300 ${
                         openIndex === index ? 'rotate-180' : ''
                       }`}
                       fill="none"
@@ -80,8 +80,8 @@ return (
                   openIndex === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                 }`}
               >
-                <div className="px-6 pb-4 pt-2">
-                  <p className="text-gray-700 leading-relaxed">
+                <div className="px-6 pb-6">
+                  <p className="text-[hsl(var(--muted-foreground))] leading-relaxed">
                     {faq.answer}
                   </p>
                 </div>

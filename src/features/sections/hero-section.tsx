@@ -28,27 +28,27 @@ export function HeroSection() {
           {/* Left Column - Text Content */}
           <div className="space-y-4 text-center md:text-left">
             <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold leading-tight">
-              <span className="text-[hsl(var(--secondary))]">Legal Solution for</span>
+              <span className="text-secondary">Legal Solution for</span>
               <br />
-              <span className="text-[hsl(var(--primary))]">Corporate</span>
-              <span className="text-[hsl(var(--secondary))]"> &</span>
+              <span className="text-primary">Corporate</span>
+              <span className="text-secondary"> &</span>
               <br />
-              <span className="text-[hsl(var(--primary))]">Investment.</span>
+              <span className="text-primary">Investment.</span>
             </h1>
 
-            <p className="text-lg text-gray-700 max-w-xl mx-auto md:mx-0">
+            <p className="text-lg text-muted-foreground font-bold max-w-xl mx-auto md:mx-0">
               Ethiopia&apos;s premier corporate law firm 
               <br />
               providing comprehensive legal 
               <br />
               solutions with
-              <span className="text-[hsl(var(--primary))] font-semibold">
+              <span className="text-primary font-semibold">
                 {" "}unmatched 
                 <br />
                 expertise
               </span>{" "}
               and
-              <span className="text-[hsl(var(--primary))] font-semibold">
+              <span className="text-primary font-semibold">
                 {" "}proven results.
               </span>
             </p>
@@ -56,12 +56,12 @@ export function HeroSection() {
             <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start pt-4">
               {/* Primary Button - Link to Contact Page */}
               <Link 
-                href="/scheduling-section"
+                href="/contact"
                 className="flex-1 min-w-0"
               >
                 <Button
                   size="lg"
-                  className="rounded-md text-white font-medium bg-[hsl(var(--secondary))] hover:bg-[hsl(var(--secondary-dark))] w-full"
+                  className="rounded-md font-medium bg-secondary hover:bg-primary text-secondary-foreground hover:text-primary-foreground transition-all duration-300 w-full"
                 >
                   Book a Consultation
                 </Button>
@@ -71,7 +71,7 @@ export function HeroSection() {
               <Button
                 size="lg"
                 variant="outline"
-                className="rounded-md bg-transparent font-medium border-2 border-[hsl(var(--secondary))] text-[hsl(var(--secondary))] hover:bg-[hsl(var(--secondary))/0.05] flex-1 min-w-0 w-full"
+                className="rounded-md bg-transparent font-medium border-2 border-secondary text-secondary hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300 flex-1 min-w-0 w-full"
               >
                 <Phone className="h-4 w-4 mr-2" />
                 <a href="tel:+251913693679" className="truncate">
@@ -83,12 +83,12 @@ export function HeroSection() {
 
           {/* Right Column - Image */}
           <div className="relative flex justify-center">
-            <div className="relative w-72 h-80 md:w-80 md:h-96">
+            <div className="relative w-96 h-80 md:w-[300px] md:h-[450px] lg:w-[300px] lg:h-[500px]">
               <Image
                 src="/shOfficeFront.jpg"
                 alt="Professional Legal Team"
                 fill
-                className="object-cover rounded-lg shadow-2xl"
+                className="object-cover rounded-none shadow-2xl"
               />
             </div>
           </div>

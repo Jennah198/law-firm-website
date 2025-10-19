@@ -3,14 +3,25 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Menu, Search, ChevronDown } from "lucide-react"
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible"
+import { Menu, Search, ChevronDown, ChevronRight } from "lucide-react"
 import Image from "next/image"
 import { useTheme } from "next-themes"
 
 const navItems = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
+  { href: "/who-we-are", label: "About" },
   { href: "/practice-areas", label: "Practice Area & Services" },
   { href: "/teams", label: "Teams" },
   { href: "/insights", label: "Insights" },
@@ -40,7 +51,6 @@ const practiceAreas = [
 
 export function Navigation() {
   const [scrolled, setScrolled] = useState(false)
-  const [isPracticeAreasOpen, setIsPracticeAreasOpen] = useState(false)
   const { theme } = useTheme()
 
   useEffect(() => {
@@ -83,35 +93,32 @@ export function Navigation() {
             {navItems.map((item) => {
               if (item.label === "Practice Area & Services") {
                 return (
-                  <div
-                    key={item.href}
-                    className="relative"
-                    onMouseEnter={() => setIsPracticeAreasOpen(true)}
-                    onMouseLeave={() => setIsPracticeAreasOpen(false)}
-                  >
-                    <button className="flex items-center space-x-1 text-sm font-medium text-brand-navy-900 hover:text-brand-gold-400 transition-colors">
-                      <span>{item.label}</span>
-                      <ChevronDown className={`h-4 w-4 transition-transform ${isPracticeAreasOpen ? "rotate-180" : ""}`} />
-                    </button>
-                    
-                    {/* Dropdown Menu */}
-                    {isPracticeAreasOpen && (
-                      <div className="absolute top-full left-0 mt-2 w-80 bg-white shadow-xl rounded-lg border border-gray-200 py-2">
-                        <div className="grid grid-cols-1 gap-1 max-h-96 overflow-y-auto">
-                          {practiceAreas.map((area) => (
-                            <Link
-                              key={area.href}
-                              href={area.href}
-                              className="px-4 py-3 text-sm text-brand-navy-900 hover:bg-brand-gold-50 hover:text-brand-gold-600 transition-colors border-b border-gray-100 last:border-b-0"
-                              onClick={() => setIsPracticeAreasOpen(false)}
-                            >
-                              {area.label}
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                  </div>
+                  <DropdownMenu key={item.href}>
+                    <DropdownMenuTrigger asChild>
+                      <Button 
+                        variant="ghost" 
+                        className="flex items-center space-x-1 text-sm font-medium text-brand-navy-900 hover:text-brand-gold-400 hover:bg-transparent data-[state=open]:text-brand-gold-400"
+                      >
+                        <span>{item.label}</span>
+                        <ChevronDown className="h-4 w-4" />
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent 
+                      align="start" 
+                      className="w-80 max-h-96 overflow-y-auto bg-white border-brand-navy-200"
+                    >
+                      {practiceAreas.map((area) => (
+                        <DropdownMenuItem key={area.href} asChild>
+                          <Link
+                            href={area.href}
+                            className="cursor-pointer text-brand-navy-900 hover:bg-brand-gold-50 hover:text-brand-gold-600 focus:bg-brand-gold-50 focus:text-brand-gold-600"
+                          >
+                            {area.label}
+                          </Link>
+                        </DropdownMenuItem>
+                      ))}
+                    </DropdownMenuContent>
+                  </DropdownMenu>
                 )
               }
               
@@ -143,26 +150,36 @@ export function Navigation() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-80">
+              <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+              
               <div className="flex flex-col space-y-4 mt-8">
                 {navItems.map((item) => {
                   if (item.label === "Practice Area & Services") {
                     return (
-                      <div key={item.href} className="space-y-2">
-                        <div className="text-brand-navy-900 font-medium text-lg border-b pb-2">
-                          Practice Areas
-                        </div>
-                        <div className="grid grid-cols-1 gap-2 pl-4">
-                          {practiceAreas.map((area) => (
-                            <Link
-                              key={area.href}
-                              href={area.href}
-                              className="text-brand-navy-700 hover:text-brand-gold-600 transition-colors text-sm py-2 border-b border-gray-100 last:border-b-0"
-                            >
-                              {area.label}
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
+                      <Collapsible key={item.href} className="space-y-2">
+                        <CollapsibleTrigger asChild>
+                          <Button
+                            variant="ghost"
+                            className="flex items-center justify-between w-full text-brand-navy-900 hover:text-brand-gold-400 hover:bg-transparent text-lg border-b pb-2"
+                          >
+                            <span>Practice Areas</span>
+                            <ChevronRight className="h-4 w-4 transition-transform duration-200 collapsible-open:rotate-90" />
+                          </Button>
+                        </CollapsibleTrigger>
+                        <CollapsibleContent>
+                          <div className="grid grid-cols-1 gap-2 pl-4 bg-brand-gold-50 rounded-lg p-3 mt-2">
+                            {practiceAreas.map((area) => (
+                              <Link
+                                key={area.href}
+                                href={area.href}
+                                className="text-brand-navy-700 hover:text-brand-gold-600 transition-colors text-sm py-2 border-b border-gray-200 last:border-b-0"
+                              >
+                                {area.label}
+                              </Link>
+                            ))}
+                          </div>
+                        </CollapsibleContent>
+                      </Collapsible>
                     )
                   }
                   

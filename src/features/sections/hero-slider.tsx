@@ -12,12 +12,12 @@ interface SlideData {
 }
 
 const slides: SlideData[] = [
-  { id: 1, title: "Corporate", subtitle: "Law in Ethiopia", imageSrc: "/buildings.jpg" },
-  { id: 2, title: "Investment", subtitle: "Law in Ethiopia", imageSrc: "/search.jpg" },
-  { id: 3, title: "Int. Trade", subtitle: "Law in Ethiopia", imageSrc: "/assets.jpg" },
-  { id: 4, title: "Mergers & Acquisitions", subtitle: "Law in Ethiopia", imageSrc: "/shOfficeFront.jpg" },
-  { id: 5, title: "Regulatory", subtitle: "Compliance", imageSrc: "/placeholder.jpg" },
-  { id: 6, title: "Strategic", subtitle: "Legal Support", imageSrc: "/placeholder.jpg" },
+  { id: 1, title: "Corporate", subtitle: "Law in Ethiopia", imageSrc: "/corporate.jpg" },
+  { id: 2, title: "Investment", subtitle: "Law in Ethiopia", imageSrc: "/investment.jpg" },
+  { id: 3, title: "Int. Trade", subtitle: "Law in Ethiopia", imageSrc: "/InternationalTradeCommercialLaw.jpg" },
+  { id: 4, title: "Mergers & Acquisitions", subtitle: "Law in Ethiopia", imageSrc: "/mergandaqusition.jpg" },
+  { id: 5, title: "Regulatory", subtitle: "Compliance", imageSrc: "/regulatory.jpg" },
+  { id: 6, title: "Strategic", subtitle: "Legal Support", imageSrc: "/FintecLaws.jpg" },
 ]
 
 export function HeroSlider() {
@@ -90,27 +90,27 @@ export function HeroSlider() {
         {/* Language Toggle Button */}
         <button
           onClick={toggleLanguage}
-          className="bg-[#2A3B72] hover:bg-[#1E2A5E] text-white rounded-lg px-4 py-3 
+          className="bg-secondary hover:bg-secondary-dark text-secondary-foreground rounded-lg px-4 py-3 
                      flex items-center space-x-2 transition-all duration-300 
                      shadow-lg hover:shadow-xl active:scale-95 cursor-pointer"
           aria-label={`Change language. Current: ${currentLanguage}`}
         >
-          <Globe className="h-4 w-4 text-white" />
+          <Globe className="h-4 w-4" />
           <span className="text-sm font-medium">{currentLanguage}</span>
         </button>
 
         {/* Theme Toggle Button */}
         <button
           onClick={toggleTheme}
-          className="bg-[#2A3B72] hover:bg-[#1E2A5E] text-white rounded-lg p-3 
+          className="bg-secondary hover:bg-secondary-dark text-secondary-foreground rounded-lg p-3 
                      transition-all duration-300 shadow-lg hover:shadow-xl 
                      active:scale-95 cursor-pointer"
           aria-label={`Switch to ${isDarkMode ? "light" : "dark"} mode`}
         >
           {isDarkMode ? (
-            <Sun className="h-4 w-4 text-white" />
+            <Sun className="h-4 w-4" />
           ) : (
-            <Moon className="h-4 w-4 text-white" />
+            <Moon className="h-4 w-4" />
           )}
         </button>
       </div>
@@ -137,14 +137,14 @@ export function HeroSlider() {
         <div className="text-center text-white">
           {/* Title */}
           <div className="relative inline-block mb-4">
-            <div className="absolute inset-0 bg-[#C5AA88] rounded-2xl transform rotate-1 scale-105 opacity-90"></div>
-            <h1 className="relative text-5xl lg:text-7xl font-bold text-[#2A3B72] px-8 py-4">
+            <div className="absolute inset-0 bg-primary rounded-2xl transform rotate-1 scale-105 opacity-90"></div>
+            <h1 className="relative text-5xl lg:text-7xl font-bold text-secondary px-8 py-4">
               {slides[currentSlide].title}
             </h1>
           </div>
 
           {/* Subtitle */}
-          <h2 className="text-4xl lg:text-6xl font-bold text-[#2A3B72] mb-8">
+          <h2 className="text-4xl lg:text-6xl font-bold text-secondary mb-8">
             {slides[currentSlide].subtitle}
           </h2>
         </div>

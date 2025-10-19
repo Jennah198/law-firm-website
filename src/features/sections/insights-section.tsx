@@ -1,111 +1,127 @@
-import Link from "next/link"
+"use client"
+
+import { useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
 import Image from "next/image"
 
-export function InsightsSection() {
-  const insights = [
-    {
-      title: "Ethiopia begins selling stakes in state-owned company",
-      description:
-        "Navigate the evolving landscape of corporate compliance with our comprehensive guide covering new regulations, best practices, and strategic approaches to ensure your business stays ahead of legal requirements while maintaining operational efficiency.",
-      image: "/placeholder.svg?height=200&width=300&text=Legal+Compliance",
-      category: "Corporate Law",
-      readTime: "5 min read",
-      link: "/insights/ethiopia-company-stakes",
-    },
-    {
-      title: "Employment Law Updates: What Employers Need to Know",
-      description:
-        "Stay informed about the latest changes in employment legislation, workplace policies, and employee rights. Our expert analysis helps employers understand their obligations and implement compliant practices in today's dynamic work environment.",
-      image: "/placeholder.svg?height=200&width=300&text=Employment+Law",
-      category: "Employment Law",
-      readTime: "7 min read",
-      link: "/insights/employment-law-updates",
-    },
-    {
-      title: "Real Estate Transactions: A Complete Legal Framework",
-      description:
-        "Explore the intricacies of real estate law with our detailed overview of property transactions, contract negotiations, due diligence processes, and risk mitigation strategies for both commercial and residential real estate deals.",
-      image: "/placeholder.svg?height=200&width=300&text=Real+Estate",
-      category: "Real Estate Law",
-      readTime: "6 min read",
-      link: "/insights/real-estate-framework",
-    },
-  ]
+const insights = [
+  {
+    name: "Capital & Compliance Insights",
+    logo: "/insights/investment.jpg",
+    description:
+      "This service is tailored to guide organizations through the complexities of corporate governance and investment. SHLO's dedicated team will help you design governance structures that attract sustainable investment and drive long-term financial success, while ensuring robust legal and regulatory compliance.",
+    expertise: "Corporate Law, M&A, Business Strategy",
+  },
+  {
+    name: "Legal Strategy & Investment Insights",
+    logo: "/insights/corporate.jpg",
+    description:
+      "Our legal representation services extend well beyond courtroom appearances, encapsulating the entire lifecycle of legal disputes and proceedings. We are dedicated to managing every phase from initial case preparation to post-judgment services while ensuring effective advocacy across courts, administrative tribunals, arbitration panels, and other legal forums.",
+    expertise: "Civil Litigation, Dispute Resolution",
+  },
+  {
+    name: "Investor & Legal Brief",
+    logo: "/insights/investers-and-legal-brief.jpg",
+    description:
+      "Continuous education is essential in a rapidly evolving legal environment. SHLO's legal training programs are designed for both legal professionals and non-lawyers, ensuring the dissemination of up-to-date knowledge and best practices.",
+    expertise: "Real Estate, Property Law",
+  },
+  {
+    name: "Corporate Governance Insights",
+    logo: "/insights/corporate-governance-insights.jpg",
+    description: "Our legal consulting services enable clients to navigate complex legal landscapes with confidence. By providing proactive advice and developing customized legal solutions, we help you align your business operations with evolving legal requirements.",
+    expertise: "Employment Law, HR Consulting",
+  },
+   {
+    name: "The Corporate Counsel Journal",
+    logo: "/insights/journal.jpg",
+    description: "Precision and timeliness are at the core of our legal documents preparation and submission services. SHLO is committed to drafting impeccable documents and ensuring that they are effectively packaged and submitted per regulatory requirements.",
+    expertise: "Employment Law, HR Consulting",
+  },
+]
+
+export function  InsightsSection() {
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null)
 
   return (
-    <section id="insights" className="py-20 bg-brand-gold-50">
+    <section id="insights" className="py-20 bg-[hsl(var(--muted))]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-brand-navy-800 mb-6">
-            Expert Thought and Insights: Your Legal Guide
-          </h2>
-          <div className="max-w-4xl mx-auto space-y-4">
-            <p className="text-xl text-brand-navy-700 leading-relaxed">
-              Stay informed with our latest legal insights, industry analysis, and expert commentary on current legal
-              trends that matter to your business and personal legal needs.
-            </p>
-            <p className="text-lg text-brand-navy-600 leading-relaxed">
-              Our experienced attorneys share their knowledge and perspectives to help you navigate complex legal
-              landscapes with confidence and make informed decisions.
-            </p>
-          </div>
+          <h2 className="text-3xl lg:text-4xl font-bold text-[hsl(var(--secondary))] mb-4">Get More Insights</h2>
+          <p className="text-xl text-[hsl(var(--muted-foreground))] max-w-3xl mx-auto">
+            Stay ahead with expert perspectives on law, business, and investment. Our insights turn complexity into clarity, helping you make informed decisions. Explore articles, updates, and thought leadership tailored to your industry.
+          </p>
         </div>
 
-        {/* Insights Grid - 3 cards in a row */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {insights.map((insight, index) => (
+        <div className="flex justify-center gap-8 overflow-x-auto pb-4">
+          {insights.map((insights, index) => (
             <Card
               key={index}
-              className="border-0 shadow-md bg-white rounded-xl cursor-pointer transition-all duration-300"
+              className={`relative transition-all duration-500 ease-in-out cursor-pointer rounded-xl ${
+                hoveredCard === index
+                  ? "w-80 bg-[hsl(var(--card))] shadow-xl border border-[hsl(var(--border))]"
+                  : "w-32 bg-[hsl(var(--accent))] hover:bg-[hsl(var(--primary))] hover:bg-opacity-10 shadow-lg"
+              }`}
+              style={{ height: "480px" }}
+              onMouseEnter={() => setHoveredCard(index)}
+              onMouseLeave={() => setHoveredCard(null)}
             >
-              <CardContent className="p-6">
-                {/* Rectangular Image */}
-                <div className="relative mb-6">
-                  <div className="w-full h-48 rounded-lg overflow-hidden shadow-lg">
-                    <Image
-                      src={insight.image || "/placeholder.svg"}
-                      alt={insight.title}
-                      width={300}
-                      height={200}
-                      className="w-full h-full object-cover"
-                    />
+              <CardContent className="p-0 h-full relative overflow-hidden">
+                {hoveredCard === index ? (
+                  // Expanded state
+                  <div className="p-6 h-full flex flex-col">
+                    <div className="flex justify-center mb-6">
+                      <div className="w-20 h-20 rounded-full bg-[hsl(var(--accent))] flex items-center justify-center overflow-hidden">
+                        <Image
+                          src={insights.logo || "/investment.jpg"}
+                          alt={insights.name}
+                          width={64}
+                          height={64}
+                          className="w-16 h-16 object-contain"
+                        />
+                      </div>
+                    </div>
+                    <h3 className="text-lg font-bold text-[hsl(var(--secondary))] mb-4 text-center">{insights.name}</h3>
+                    {/* Scrollable description */}
+                    <div className="flex-grow overflow-y-auto pr-2">
+                      <p className="text-sm text-[hsl(var(--muted-foreground))] leading-relaxed">
+                        {insights.description}
+                      </p>
+                    </div>
+                    <div className="mt-4">
+                      <div className="text-xs font-semibold text-[hsl(var(--primary))] mb-2">EXPERTISE:</div>
+                      <div className="text-xs text-[hsl(var(--secondary))]">{insights.expertise}</div>
+                    </div>
                   </div>
-                  <div className="absolute top-3 left-3">
-                    <span className="bg-brand-gold-500 text-white text-xs font-semibold px-3 py-1 rounded-full">
-                      {insight.category}
-                    </span>
+                ) : (
+                  // Collapsed state
+                  <div className="h-full flex flex-col items-center py-8">
+                    <div className="flex justify-center mb-16">
+                      <div className="w-18 h-18 rounded-full bg-[hsl(var(--primary))] bg-opacity-20 flex items-center justify-center overflow-hidden">
+                        <Image
+                          src={insights.logo || "/placeholder.svg"}
+                          alt={insights.name}
+                          width={48}
+                          height={48}
+                          className="w-12 h-12 object-contain"
+                        />
+                      </div>
+                    </div>
+                    <div className="flex-grow flex items-center justify-center">
+                      <div
+                        className="text-base font-semibold text-[hsl(var(--secondary))] whitespace-nowrap"
+                        style={{
+                          transform: "rotate(-90deg)",
+                          transformOrigin: "center",
+                          width: "200px",
+                          textAlign: "center",
+                        }}
+                      >
+                        {insights.name}
+                      </div>
+                    </div>
                   </div>
-                </div>
-
-                {/* Content */}
-                <div className="text-left">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-sm text-brand-navy-600">
-                      {insight.readTime}
-                    </span>
-                  </div>
-
-                  <h3 className="text-xl font-semibold text-brand-navy-800 mb-3 leading-tight">
-                    {insight.title}
-                  </h3>
-
-                  <p className="text-brand-navy-700 leading-relaxed text-sm mb-6">
-                    {insight.description}
-                  </p>
-
-                  {/* Read More Link Button with its own hover */}
-                  <Link href={insight.link}>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="border-2 border-brand-gold-400 text-brand-gold-600 hover:bg-brand-navy-800 hover:text-white hover:border-brand-navy-800 px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 bg-transparent"
-                    >
-                      Read More
-                    </Button>
-                  </Link>
-                </div>
+                )}
               </CardContent>
             </Card>
           ))}

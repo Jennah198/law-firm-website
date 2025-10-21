@@ -15,7 +15,29 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible"
-import { Menu, Search, ChevronDown, ChevronRight } from "lucide-react"
+import { 
+  Menu, 
+  Search, 
+  ChevronDown, 
+  ChevronRight,
+  Building,
+  TrendingUp,
+  Receipt,
+  Copyright,
+  Merge,
+  Home,
+  Zap,
+  Factory,
+  Users,
+  Briefcase,
+  Scale,
+  Heart,
+  Sprout,
+  Landmark,
+  Smartphone,
+  Globe,
+  Gem
+} from "lucide-react"
 import Image from "next/image"
 import { useTheme } from "next-themes"
 
@@ -29,24 +51,24 @@ const navItems = [
   { href: "/contact", label: "Contacts" },
 ]
 
-// Updated practice areas with direct links to individual pages
+// Updated practice areas with icons
 const practiceAreas = [
-  { href: "/practice-areas/investment-law", label: "Investment Law" },
-  { href: "/practice-areas/corporate-law", label: "Corporate Law" },
-  { href: "/practice-areas/tax-customs-law", label: "Tax & Customs Law" },
-  { href: "/practice-areas/intellectual-property", label: "Intellectual Property & Technology Rights" },
-  { href: "/practice-areas/mergers-acquisitions", label: "Mergers & Acquisitions (M&A)" },
-  { href: "/practice-areas/engineering-construction-real-estate", label: "Engineering, Construction & Real Estate Law" },
-  { href: "/practice-areas/energy-natural-resources", label: "Energy & Natural Resources" },
-  { href: "/practice-areas/manufacturing-industry", label: "Manufacturing & Industry Law" },
-  { href: "/practice-areas/ngo-civil-society", label: "NGO & Civil Society Organizations" },
-  { href: "/practice-areas/employment-labor", label: "Employment & Labor Law" },
-  { href: "/practice-areas/dispute-resolution", label: "Dispute Resolution, Litigation & Legal Representation" },
-  { href: "/practice-areas/healthcare-law", label: "Healthcare Law" },
-  { href: "/practice-areas/agriculture-agribusiness", label: "Agriculture & Agribusiness Law" },
-  { href: "/practice-areas/property-successions", label: "Property Law & Successions" },
-  { href: "/practice-areas/fintech-law", label: "FinTech Law" },
-  { href: "/practice-areas/international-trade-commercial", label: "International Trade & Commercial Law" },
+  { href: "/practice-areas/investment-law", label: "Investment Law", icon: TrendingUp },
+  { href: "/practice-areas/corporate-law", label: "Corporate Law", icon: Building },
+  { href: "/practice-areas/tax-customs-law", label: "Tax & Customs Law", icon: Receipt },
+  { href: "/practice-areas/intellectual-property", label: "Intellectual Property", icon: Copyright },
+  { href: "/practice-areas/mergers-acquisitions", label: "Mergers & Acquisitions", icon: Merge },
+  { href: "/practice-areas/engineering-construction-real-estate", label: "Construction & Real Estate", icon: Home },
+  { href: "/practice-areas/energy-natural-resources", label: "Energy & Natural Resources", icon: Zap },
+  { href: "/practice-areas/manufacturing-industry", label: "Manufacturing & Industry", icon: Factory },
+  { href: "/practice-areas/ngo-civil-society", label: "NGO & Civil Society", icon: Users },
+  { href: "/practice-areas/employment-labor", label: "Employment & Labor", icon: Briefcase },
+  { href: "/practice-areas/dispute-resolution", label: "Dispute Resolution", icon: Scale },
+  { href: "/practice-areas/healthcare-law", label: "Healthcare Law", icon: Heart },
+  { href: "/practice-areas/agriculture-agribusiness", label: "Agriculture & Agribusiness", icon: Sprout },
+  { href: "/practice-areas/property-successions", label: "Property & Successions", icon: Landmark },
+  { href: "/practice-areas/fintech-law", label: "FinTech Law", icon: Smartphone },
+  { href: "/practice-areas/international-trade-commercial", label: "International Trade", icon: Globe },
 ]
 
 export function Navigation() {
@@ -105,18 +127,32 @@ export function Navigation() {
                     </DropdownMenuTrigger>
                     <DropdownMenuContent 
                       align="start" 
-                      className="w-80 max-h-96 overflow-y-auto bg-white border-brand-navy-200"
+                      className="w-[600px] max-h-96 overflow-y-auto bg-white border-brand-navy-200 p-4"
                     >
-                      {practiceAreas.map((area) => (
-                        <DropdownMenuItem key={area.href} asChild>
-                          <Link
-                            href={area.href}
-                            className="cursor-pointer text-brand-navy-900 hover:bg-brand-gold-50 hover:text-brand-gold-600 focus:bg-brand-gold-50 focus:text-brand-gold-600 py-2 px-3"
-                          >
-                            {area.label}
-                          </Link>
-                        </DropdownMenuItem>
-                      ))}
+                      {/* Grid Layout for Practice Areas */}
+                      <div className="grid grid-cols-2 gap-3">
+                        {practiceAreas.map((area) => {
+                          const IconComponent = area.icon
+                          return (
+                            <DropdownMenuItem key={area.href} asChild className="p-0">
+                              <Link
+                                href={area.href}
+                                className="flex items-center space-x-3 p-3 rounded-lg cursor-pointer text-brand-navy-900 hover:bg-brand-gold-50 hover:text-brand-gold-600 focus:bg-brand-gold-50 focus:text-brand-gold-600 transition-colors border border-transparent hover:border-brand-gold-200"
+                              >
+                                <div className="flex-shrink-0 w-10 h-10 bg-brand-gold-100 rounded-lg flex items-center justify-center">
+                                  <IconComponent className="h-5 w-5 text-brand-gold-600" />
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                  <span className="text-sm font-medium leading-tight">
+                                    {area.label}
+                                  </span>
+                                </div>
+                              </Link>
+                            </DropdownMenuItem>
+                          )
+                        })}
+                      </div>
+                      
                     </DropdownMenuContent>
                   </DropdownMenu>
                 )
@@ -167,22 +203,36 @@ export function Navigation() {
                           </Button>
                         </CollapsibleTrigger>
                         <CollapsibleContent>
-                          <div className="pl-4 mt-2 space-y-1">
+                          <div className="pl-4 mt-2 space-y-2">
+                            {/* Mobile Grid Layout */}
+                            <div className="grid grid-cols-1 gap-2">
+                              {practiceAreas.map((area) => {
+                                const IconComponent = area.icon
+                                return (
+                                  <Link
+                                    key={area.href}
+                                    href={area.href}
+                                    className="flex items-center space-x-3 p-3 rounded-lg text-brand-navy-700 hover:text-brand-gold-600 hover:bg-brand-gold-50 transition-colors border border-gray-200"
+                                  >
+                                    <div className="flex-shrink-0 w-8 h-8 bg-brand-gold-100 rounded-lg flex items-center justify-center">
+                                      <IconComponent className="h-4 w-4 text-brand-gold-600" />
+                                    </div>
+                                    <span className="text-sm font-medium flex-1">
+                                      {area.label}
+                                    </span>
+                                  </Link>
+                                )
+                              })}
+                            </div>
+                            
+                            {/* View All Link for Mobile */}
                             <Link
                               href="/practice-areas"
-                              className="text-brand-gold-600 hover:text-brand-gold-700 font-semibold text-sm py-2 block border-b border-gray-200"
+                              className="flex items-center justify-center space-x-2 text-brand-gold-600 hover:text-brand-gold-700 font-semibold text-sm py-3 mt-2 rounded-md border-2 border-brand-gold-200 hover:bg-brand-gold-50 transition-colors"
                             >
-                              View All Practice Areas
+                              <Gem className="h-4 w-4" />
+                              <span>View All Practice Areas</span>
                             </Link>
-                            {practiceAreas.map((area) => (
-                              <Link
-                                key={area.href}
-                                href={area.href}
-                                className="text-brand-navy-700 hover:text-brand-gold-600 transition-colors text-sm py-2 border-b border-gray-200 last:border-b-0 block"
-                              >
-                                {area.label}
-                              </Link>
-                            ))}
                           </div>
                         </CollapsibleContent>
                       </Collapsible>

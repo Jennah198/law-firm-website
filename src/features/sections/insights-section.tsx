@@ -40,8 +40,23 @@ const insights = [
   },
 ]
 
-export function  InsightsSection() {
+export function InsightsSection() {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null)
+  const [expandedCard, setExpandedCard] = useState<number | null>(null)
+
+  const handleCardClick = (index: number) => {
+    if (expandedCard === index) {
+      setExpandedCard(null)
+    } else {
+      setExpandedCard(index)
+    }
+    setHoveredCard(index)
+  }
+
+  const handleCardClose = () => {
+    setExpandedCard(null)
+    setHoveredCard(null)
+  }
 
   return (
     <section id="insights" className="py-20 bg-[hsl(var(--muted))]">
@@ -53,8 +68,9 @@ export function  InsightsSection() {
           </p>
         </div>
 
-        <div className="flex justify-center gap-8 overflow-x-auto pb-4">
-          {insights.map((insights, index) => (
+        {/* Desktop View - Horizontal Scroll */}
+        <div className="hidden md:flex justify-center gap-8 overflow-x-auto pb-4">
+          {insights.map((insight, index) => (
             <Card
               key={index}
               className={`relative transition-all duration-500 ease-in-out cursor-pointer rounded-xl ${
@@ -73,24 +89,24 @@ export function  InsightsSection() {
                     <div className="flex justify-center mb-6">
                       <div className="w-20 h-20 rounded-full bg-[hsl(var(--accent))] flex items-center justify-center overflow-hidden">
                         <Image
-                          src={insights.logo || "/investment.jpg"}
-                          alt={insights.name}
+                          src={insight.logo || "/investment.jpg"}
+                          alt={insight.name}
                           width={64}
                           height={64}
                           className="w-16 h-16 object-contain"
                         />
                       </div>
                     </div>
-                    <h3 className="text-lg font-bold text-[hsl(var(--secondary))] mb-4 text-center">{insights.name}</h3>
+                    <h3 className="text-lg font-bold text-[hsl(var(--secondary))] mb-4 text-center">{insight.name}</h3>
                     {/* Scrollable description */}
                     <div className="flex-grow overflow-y-auto pr-2">
                       <p className="text-sm text-[hsl(var(--muted-foreground))] leading-relaxed">
-                        {insights.description}
+                        {insight.description}
                       </p>
                     </div>
                     <div className="mt-4">
                       <div className="text-xs font-semibold text-[hsl(var(--primary))] mb-2">EXPERTISE:</div>
-                      <div className="text-xs text-[hsl(var(--secondary))]">{insights.expertise}</div>
+                      <div className="text-xs text-[hsl(var(--secondary))]">{insight.expertise}</div>
                     </div>
                   </div>
                 ) : (
@@ -99,8 +115,8 @@ export function  InsightsSection() {
                     <div className="flex justify-center mb-16">
                       <div className="w-18 h-18 rounded-full bg-[hsl(var(--primary))] bg-opacity-20 flex items-center justify-center overflow-hidden">
                         <Image
-                          src={insights.logo || "/placeholder.svg"}
-                          alt={insights.name}
+                          src={insight.logo || "/placeholder.svg"}
+                          alt={insight.name}
                           width={48}
                           height={48}
                           className="w-12 h-12 object-contain"
@@ -117,8 +133,88 @@ export function  InsightsSection() {
                           textAlign: "center",
                         }}
                       >
-                        {insights.name}
+                        {insight.name}
                       </div>
+                    </div>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        {/* Mobile View - Vertical Stack */}
+        <div className="md:hidden space-y-4">
+          {insights.map((insight, index) => (
+            <Card
+              key={index}
+              className={`relative transition-all duration-300 ease-in-out cursor-pointer rounded-xl ${
+                expandedCard === index
+                  ? "bg-[hsl(var(--card))] shadow-xl border border-[hsl(var(--border))]"
+                  : "bg-[hsl(var(--accent))] shadow-lg"
+              }`}
+              onClick={() => handleCardClick(index)}
+            >
+              <CardContent className="p-0 relative overflow-hidden">
+                {expandedCard === index ? (
+                  // Expanded state on mobile
+                  <div className="p-6 flex flex-col">
+                    {/* Close button for mobile */}
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        handleCardClose()
+                      }}
+                      className="absolute top-4 right-4 w-8 h-8 rounded-full bg-[hsl(var(--muted))] flex items-center justify-center text-[hsl(var(--secondary))] hover:bg-[hsl(var(--accent))] transition-colors"
+                      aria-label="Close card"
+                    >
+                      ×
+                    </button>
+                    
+                    <div className="flex justify-center mb-6">
+                      <div className="w-20 h-20 rounded-full bg-[hsl(var(--accent))] flex items-center justify-center overflow-hidden">
+                        <Image
+                          src={insight.logo || "/investment.jpg"}
+                          alt={insight.name}
+                          width={64}
+                          height={64}
+                          className="w-16 h-16 object-contain"
+                        />
+                      </div>
+                    </div>
+                    <h3 className="text-lg font-bold text-[hsl(var(--secondary))] mb-4 text-center">{insight.name}</h3>
+                    <div className="flex-grow">
+                      <p className="text-sm text-[hsl(var(--muted-foreground))] leading-relaxed mb-4">
+                        {insight.description}
+                      </p>
+                    </div>
+                    <div className="mt-4">
+                      <div className="text-xs font-semibold text-[hsl(var(--primary))] mb-2">EXPERTISE:</div>
+                      <div className="text-xs text-[hsl(var(--secondary))]">{insight.expertise}</div>
+                    </div>
+                  </div>
+                ) : (
+                  // Collapsed state on mobile
+                  <div className="p-4 flex items-center space-x-4">
+                    <div className="w-12 h-12 rounded-full bg-[hsl(var(--primary))] bg-opacity-20 flex items-center justify-center overflow-hidden flex-shrink-0">
+                      <Image
+                        src={insight.logo || "/placeholder.svg"}
+                        alt={insight.name}
+                        width={32}
+                        height={32}
+                        className="w-8 h-8 object-contain"
+                      />
+                    </div>
+                    <div className="flex-grow">
+                      <h3 className="text-base font-semibold text-[hsl(var(--secondary))] line-clamp-2">
+                        {insight.name}
+                      </h3>
+                      <div className="text-xs text-[hsl(var(--muted-foreground))] mt-1">
+                        Tap to expand
+                      </div>
+                    </div>
+                    <div className="text-[hsl(var(--secondary))] text-lg font-bold">
+                      +
                     </div>
                   </div>
                 )}

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { ChevronLeft, ChevronRight, Globe, Sun, Moon } from "lucide-react"
+import { useTheme } from "next-themes"
 import Image from "next/image"
 
 interface SlideData {
@@ -23,8 +24,16 @@ const slides: SlideData[] = [
 export function HeroSlider() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
-  const [isDarkMode, setIsDarkMode] = useState(false)
   const [currentLanguage, setCurrentLanguage] = useState("En")
+  
+  // Properly use next-themes
+  const { theme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  // Ensure component is mounted to avoid hydration mismatch
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   // Auto-slide every 5 seconds
   useEffect(() => {
@@ -51,10 +60,7 @@ export function HeroSlider() {
   }
 
   const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode)
-    // Here you would typically update the global theme state or CSS variables
-    // For now, we'll just toggle the local state
-    console.log("Theme toggled to:", !isDarkMode ? "dark" : "light")
+    setTheme(theme === "dark" ? "light" : "dark")
   }
 
   const toggleLanguage = () => {
@@ -62,9 +68,24 @@ export function HeroSlider() {
     const currentIndex = languages.indexOf(currentLanguage)
     const nextIndex = (currentIndex + 1) % languages.length
     setCurrentLanguage(languages[nextIndex])
-    // Here you would typically update the global language state
-    console.log("Language changed to:", languages[nextIndex])
   }
+
+  // Avoid rendering until mounted to prevent hydration mismatch
+  if (!mounted) {
+    return (
+      <section className="relative h-screen w-full overflow-hidden bg-gray-200">
+        {/* Loading skeleton */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="text-center">
+            <div className="h-16 bg-gray-300 rounded-2xl w-64 mb-4 mx-auto"></div>
+            <div className="h-12 bg-gray-300 rounded-lg w-48 mx-auto"></div>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  const isDarkMode = theme === "dark"
 
   return (
     <section className="relative h-screen w-full overflow-hidden">
@@ -74,18 +95,18 @@ export function HeroSlider() {
           src={slides[currentSlide].imageSrc}
           alt={`${slides[currentSlide].title} ${slides[currentSlide].subtitle}`}
           fill
-          priority={currentSlide === 0} // preload first image
-          quality={75} // reduce size without losing quality
-          sizes="100vw" // responsive optimization hint
+          priority={currentSlide === 0}
+          quality={75}
+          sizes="100vw"
           className="object-cover object-center"
           style={{ filter: "blur(1px)" }}
         />
       </div>
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/30" />
+      {/* Overlay - adjusted for dark mode */}
+      <div className={`absolute inset-0 ${isDarkMode ? 'bg-black/50' : 'bg-black/30'}`} />
 
-      {/* Language and Theme Toggles - UPDATED */}
+      {/* Language and Theme Toggles */}
       <div className="absolute top-40 right-0 z-20 flex flex-col items-end space-y-3">
         {/* Language Toggle Button */}
         <button

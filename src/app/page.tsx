@@ -16,7 +16,7 @@ import Csr from "@/features/sections/csr"
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen">
+    <main className="pt-16">
       <Navigation />
       <HeroSlider />  
       <HeroSection />

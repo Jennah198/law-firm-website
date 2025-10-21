@@ -88,7 +88,7 @@ export function HeroSlider() {
   const isDarkMode = theme === "dark"
 
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section className="relative h-screen w-full overflow-hidden pt-16">
       {/* ✅ Optimized Background Image */}
       <div className="absolute inset-0 transition-all duration-1000 ease-in-out">
         <Image

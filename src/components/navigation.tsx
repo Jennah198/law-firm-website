@@ -29,24 +29,24 @@ const navItems = [
   { href: "/contact", label: "Contacts" },
 ]
 
-// Practice areas data matching your 16 cards
+// Updated practice areas with direct links to individual pages
 const practiceAreas = [
-  { href: "/practice-areas#investment-law", label: "Investment Law" },
-  { href: "/practice-areas#corporate-law", label: "Corporate Law" },
-  { href: "/practice-areas#tax-customs-law", label: "Tax & Customs Law" },
-  { href: "/practice-areas#intellectual-property", label: "Intellectual Property & Technology Rights" },
-  { href: "/practice-areas#mergers-acquisitions", label: "Mergers & Acquisitions (M&A)" },
-  { href: "/practice-areas#engineering-construction", label: "Engineering, Construction & Real Estate Law" },
-  { href: "/practice-areas#energy-natural-resources", label: "Energy & Natural Resources" },
-  { href: "/practice-areas#manufacturing-industry", label: "Manufacturing & Industry Law" },
-  { href: "/practice-areas#ngo-civil-society", label: "NGO & Civil Society Organizations" },
-  { href: "/practice-areas#employment-labor", label: "Employment & Labor Law" },
-  { href: "/practice-areas#dispute-resolution", label: "Dispute Resolution, Litigation & Legal Representation" },
-  { href: "/practice-areas#healthcare-law", label: "Healthcare Law" },
-  { href: "/practice-areas#agriculture-agribusiness", label: "Agriculture & Agribusiness Law" },
-  { href: "/practice-areas#property-law", label: "Property Law & Successions" },
-  { href: "/practice-areas#fintech-law", label: "FinTech Law" },
-  { href: "/practice-areas#international-trade", label: "International Trade & Commercial Law" },
+  { href: "/practice-areas/investment-law", label: "Investment Law" },
+  { href: "/practice-areas/corporate-law", label: "Corporate Law" },
+  { href: "/practice-areas/tax-customs-law", label: "Tax & Customs Law" },
+  { href: "/practice-areas/intellectual-property", label: "Intellectual Property & Technology Rights" },
+  { href: "/practice-areas/mergers-acquisitions", label: "Mergers & Acquisitions (M&A)" },
+  { href: "/practice-areas/engineering-construction-real-estate", label: "Engineering, Construction & Real Estate Law" },
+  { href: "/practice-areas/energy-natural-resources", label: "Energy & Natural Resources" },
+  { href: "/practice-areas/manufacturing-industry", label: "Manufacturing & Industry Law" },
+  { href: "/practice-areas/ngo-civil-society", label: "NGO & Civil Society Organizations" },
+  { href: "/practice-areas/employment-labor", label: "Employment & Labor Law" },
+  { href: "/practice-areas/dispute-resolution", label: "Dispute Resolution, Litigation & Legal Representation" },
+  { href: "/practice-areas/healthcare-law", label: "Healthcare Law" },
+  { href: "/practice-areas/agriculture-agribusiness", label: "Agriculture & Agribusiness Law" },
+  { href: "/practice-areas/property-successions", label: "Property Law & Successions" },
+  { href: "/practice-areas/fintech-law", label: "FinTech Law" },
+  { href: "/practice-areas/international-trade-commercial", label: "International Trade & Commercial Law" },
 ]
 
 export function Navigation() {
@@ -111,7 +111,7 @@ export function Navigation() {
                         <DropdownMenuItem key={area.href} asChild>
                           <Link
                             href={area.href}
-                            className="cursor-pointer text-brand-navy-900 hover:bg-brand-gold-50 hover:text-brand-gold-600 focus:bg-brand-gold-50 focus:text-brand-gold-600"
+                            className="cursor-pointer text-brand-navy-900 hover:bg-brand-gold-50 hover:text-brand-gold-600 focus:bg-brand-gold-50 focus:text-brand-gold-600 py-2 px-3"
                           >
                             {area.label}
                           </Link>
@@ -167,12 +167,18 @@ export function Navigation() {
                           </Button>
                         </CollapsibleTrigger>
                         <CollapsibleContent>
-                          <div className="grid grid-cols-1 gap-2 pl-4 bg-brand-gold-50 rounded-lg p-3 mt-2">
+                          <div className="pl-4 mt-2 space-y-1">
+                            <Link
+                              href="/practice-areas"
+                              className="text-brand-gold-600 hover:text-brand-gold-700 font-semibold text-sm py-2 block border-b border-gray-200"
+                            >
+                              View All Practice Areas
+                            </Link>
                             {practiceAreas.map((area) => (
                               <Link
                                 key={area.href}
                                 href={area.href}
-                                className="text-brand-navy-700 hover:text-brand-gold-600 transition-colors text-sm py-2 border-b border-gray-200 last:border-b-0"
+                                className="text-brand-navy-700 hover:text-brand-gold-600 transition-colors text-sm py-2 border-b border-gray-200 last:border-b-0 block"
                               >
                                 {area.label}
                               </Link>

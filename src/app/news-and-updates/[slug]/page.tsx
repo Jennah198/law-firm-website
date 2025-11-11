@@ -8,15 +8,17 @@ import Link from "next/link";
 import { Footer } from "@/components/footer"
 import { ContactSection } from "@/features/sections/contact-section"
 
-
+// Update the interface to use Promise
 interface Params {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
-export default function NewsDetailPage({ params }: Params) {
-  const { slug } = params;
+// Add async to the function
+export default async function NewsDetailPage({ params }: Params) {
+  // Await the params Promise
+  const { slug } = await params;
 
   // Find the news item that matches the slug
   const newsItem = newsItems.find((item) => slugify(item.title) === slug);

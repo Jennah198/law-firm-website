@@ -2,9 +2,10 @@ import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
+import { slugify } from "@/lib/utils"
 
 export function NewsAndUpdates() {
-  const newsItems = [ // ✅ Fixed: Changed variable name from "news-and-updates" to "newsItems"
+  const newsItems = [
     {
       title: "Ethiopia begins selling stakes in state-owned company",
       description:
@@ -12,16 +13,14 @@ export function NewsAndUpdates() {
       image: "/intelectualproperty.jpg",
       category: "Corporate Law",
       readTime: "5 min read",
-      link: "/news-and-updates/ethiopia-company-stakes",
     },
     {
       title: "Government to Levy Tax on Social Media Income",
       description:
-        "Ethiopia's Social Meida Tax targets Tik Tok too. Social Media. By: Getahun Tsegaye Staff Reporter. Addis Ababa, Ethiopia – Ethiopia plans to...",
+        "Ethiopia's Social Media Tax targets TikTok too. Social Media. By: Getahun Tsegaye Staff Reporter. Addis Ababa, Ethiopia – Ethiopia plans to...",
       image: "/EmploymentandLabor.jpg",
       category: "Employment Law",
       readTime: "7 min read",
-      link: "/news-and-updates/employment-law-updates",
     },
     {
       title: "Ethiopia enacts long-awaited startup law to boost digital economy",
@@ -30,7 +29,6 @@ export function NewsAndUpdates() {
       image: "/realstates.jpg",
       category: "Real Estate Law",
       readTime: "6 min read",
-      link: "/news-and-updates/real-estate-framework",
     },
   ]
 
@@ -48,15 +46,13 @@ export function NewsAndUpdates() {
           </div>
         </div>
 
-        {/* News Grid - 3 cards in a row */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {newsItems.map((newsItem, index) => ( // ✅ Fixed: Changed to "newsItems"
+          {newsItems.map((newsItem, index) => (
             <Card
               key={index}
               className="border-0 shadow-md bg-[hsl(var(--card))] rounded-xl cursor-pointer transition-all duration-300 border border-[hsl(var(--border))]"
             >
               <CardContent className="p-6">
-                {/* Rectangular Image */}
                 <div className="relative mb-6">
                   <div className="w-full h-48 rounded-lg overflow-hidden shadow-lg">
                     <Image
@@ -74,7 +70,6 @@ export function NewsAndUpdates() {
                   </div>
                 </div>
 
-                {/* Content */}
                 <div className="text-left">
                   <div className="flex items-center justify-between mb-3">
                     <span className="text-sm text-[hsl(var(--muted-foreground))]">
@@ -90,8 +85,8 @@ export function NewsAndUpdates() {
                     {newsItem.description}
                   </p>
 
-                  {/* Read More Link Button with its own hover */}
-                  <Link href={newsItem.link}>
+                  {/* ✅ Dynamic Read More Button */}
+                  <Link href={`/news-and-updates/${slugify(newsItem.title)}`}>
                     <Button
                       variant="outline"
                       size="sm"

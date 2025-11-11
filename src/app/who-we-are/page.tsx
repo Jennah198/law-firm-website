@@ -1,10 +1,24 @@
+"use client"
+
+import { useRouter } from "next/navigation"
+import { ArrowLeft } from "lucide-react"
 import Image from "next/image"
 import { ContactSection } from "@/features/sections/contact-section"
 import { Footer } from "@/components/footer"
 
 export default function WhoWeArePage() {
+  const router = useRouter()
+
   return (
     <main className="min-h-screen bg-background">
+      {/* Simple Back Arrow */}
+      <button
+        onClick={() => router.back()}
+        className="fixed top-20 left-4 z-40 p-2 bg-[hsl(var(--secondary))]/80 backdrop-blur-sm rounded-full shadow-lg hover:bg-[hsl(var(--primary))] transition-colors"
+      >
+        <ArrowLeft className="h-5 w-5 text-white" />
+      </button>
+
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 text-justify">
           <div className="mx-auto mb-8 flex items-center justify-center">

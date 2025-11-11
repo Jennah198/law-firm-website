@@ -1,10 +1,14 @@
 "use client"
 
+import { useRouter } from "next/navigation"
+import { ArrowLeft } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
 
 export function PracticeAreasInner() {
+  const router = useRouter()
+  
   // ✅ Just edit this array to update the content or images.
   const practiceAreas = [
     {
@@ -107,7 +111,16 @@ export function PracticeAreasInner() {
   
   return (
     <section className="min-h-screen bg-[hsl(var(--muted))] flex flex-col items-center py-20 px-6">
+      {/* Back Button */}
+      <button
+        onClick={() => router.back()}
+        className="fixed top-20 left-4 z-40 p-2 bg-[hsl(var(--secondary))]/80 backdrop-blur-sm rounded-full shadow-lg hover:bg-[hsl(var(--primary))] transition-colors"
+      >
+        <ArrowLeft className="h-5 w-5 text-white" />
+      </button>
+
       <div className="max-w-6xl w-full">
+        
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-[hsl(var(--primary))] mb-2">

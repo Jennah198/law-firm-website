@@ -185,75 +185,85 @@ export function Navigation() {
                 <Menu className="h-5 w-5 text-brand-navy-900" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-80">
+            <SheetContent side="right" className="w-80 sm:w-96">
               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
               
-              <div className="flex flex-col space-y-4 mt-8">
-                {navItems.map((item) => {
-                  if (item.label === "Practice Area & Services") {
-                    return (
-                      <Collapsible key={item.href} className="space-y-2">
-                        <CollapsibleTrigger asChild>
-                          <Button
-                            variant="ghost"
-                            className="flex items-center justify-between w-full text-brand-navy-900 hover:text-brand-gold-400 hover:bg-transparent text-lg border-b pb-2"
-                          >
-                            <span>Practice Areas</span>
-                            <ChevronRight className="h-4 w-4 transition-transform duration-200 collapsible-open:rotate-90" />
-                          </Button>
-                        </CollapsibleTrigger>
-                        <CollapsibleContent>
-                          <div className="pl-4 mt-2 space-y-2">
-                            {/* Mobile Grid Layout */}
-                            <div className="grid grid-cols-1 gap-2">
-                              {practiceAreas.map((area) => {
-                                const IconComponent = area.icon
-                                return (
-                                  <Link
-                                    key={area.href}
-                                    href={area.href}
-                                    className="flex items-center space-x-3 p-3 rounded-lg text-brand-navy-700 hover:text-brand-gold-600 hover:bg-brand-gold-50 transition-colors border border-gray-200"
-                                  >
-                                    <div className="flex-shrink-0 w-8 h-8 bg-brand-gold-100 rounded-lg flex items-center justify-center">
-                                      <IconComponent className="h-4 w-4 text-brand-gold-600" />
-                                    </div>
-                                    <span className="text-sm font-medium flex-1">
-                                      {area.label}
-                                    </span>
-                                  </Link>
-                                )
-                              })}
-                            </div>
-                            
-                            {/* View All Link for Mobile */}
-                            <Link
-                              href="/practice-areas"
-                              className="flex items-center justify-center space-x-2 text-brand-gold-600 hover:text-brand-gold-700 font-semibold text-sm py-3 mt-2 rounded-md border-2 border-brand-gold-200 hover:bg-brand-gold-50 transition-colors"
+              <div className="flex flex-col h-full">
+                {/* Main Navigation Items */}
+                <div className="space-y-4 mt-8 flex-shrink-0">
+                  {navItems.map((item) => {
+                    if (item.label === "Practice Area & Services") {
+                      return (
+                        <Collapsible key={item.href} className="space-y-2">
+                          <CollapsibleTrigger asChild>
+                            <Button
+                              variant="ghost"
+                              className="flex items-center justify-between w-full text-brand-navy-900 hover:text-brand-gold-400 hover:bg-transparent text-lg border-b pb-2"
                             >
-                              <Gem className="h-4 w-4" />
-                              <span>View All Practice Areas</span>
-                            </Link>
-                          </div>
-                        </CollapsibleContent>
-                      </Collapsible>
+                              <span>Practice Areas</span>
+                              <ChevronRight className="h-4 w-4 transition-transform duration-200 collapsible-open:rotate-90" />
+                            </Button>
+                          </CollapsibleTrigger>
+                          <CollapsibleContent>
+                            {/* Scrollable Practice Areas Container */}
+                            <div className="pl-4 mt-2">
+                              <div className="max-h-64 overflow-y-auto pr-2 space-y-2">
+                                {/* Mobile Grid Layout */}
+                                <div className="grid grid-cols-1 gap-2">
+                                  {practiceAreas.map((area) => {
+                                    const IconComponent = area.icon
+                                    return (
+                                      <Link
+                                        key={area.href}
+                                        href={area.href}
+                                        className="flex items-center space-x-3 p-3 rounded-lg text-brand-navy-700 hover:text-brand-gold-600 hover:bg-brand-gold-50 transition-colors border border-gray-200"
+                                      >
+                                        <div className="flex-shrink-0 w-8 h-8 bg-brand-gold-100 rounded-lg flex items-center justify-center">
+                                          <IconComponent className="h-4 w-4 text-brand-gold-600" />
+                                        </div>
+                                        <span className="text-sm font-medium flex-1">
+                                          {area.label}
+                                        </span>
+                                      </Link>
+                                    )
+                                  })}
+                                </div>
+                              </div>
+                              
+                              {/* View All Link for Mobile */}
+                              <Link
+                                href="/practice-areas"
+                                className="flex items-center justify-center space-x-2 text-brand-gold-600 hover:text-brand-gold-700 font-semibold text-sm py-3 mt-3 rounded-md border-2 border-brand-gold-200 hover:bg-brand-gold-50 transition-colors"
+                              >
+                                <Gem className="h-4 w-4" />
+                                <span>View All Practice Areas</span>
+                              </Link>
+                            </div>
+                          </CollapsibleContent>
+                        </Collapsible>
+                      )
+                    }
+                    
+                    return (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className="text-brand-navy-900 hover:text-brand-gold-400 transition-colors text-lg border-b pb-2 block"
+                      >
+                        {item.label}
+                      </Link>
                     )
-                  }
-                  
-                  return (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      className="text-brand-navy-900 hover:text-brand-gold-400 transition-colors text-lg border-b pb-2"
-                    >
-                      {item.label}
-                    </Link>
-                  )
-                })}
-                <Link href="/contact" className="w-full mt-4">
-                  <Button className="bg-brand-gold-400 hover:bg-brand-gold-500 text-white w-full rounded-md">
-                    Get Consultation
-                  </Button>
-                </Link>
+                  })}
+                </div>
+
+                {/* Get Consultation Button - Pushed to bottom */}
+                <div className="mt-auto pt-6 pb-4 flex-shrink-0">
+                  <Link href="/contact" className="w-full">
+                    <Button className="bg-brand-gold-400 hover:bg-brand-gold-500 text-white w-full rounded-md py-3 text-base">
+                      Get Consultation
+                    </Button>
+                  </Link>
+                </div>
               </div>
             </SheetContent>
           </Sheet>

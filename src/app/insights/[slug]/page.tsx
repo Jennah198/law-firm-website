@@ -6,13 +6,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { Linkedin, Facebook, Twitter, Instagram } from "lucide-react";
 
-
-export default function InsightDetailPage({
+// Add async to the function and await params
+export default async function InsightDetailPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const { slug } = params;
+  // Await the params Promise
+  const { slug } = await params;
   const insight = insightsData.find((i) => i.slug === slug);
 
   if (!insight) return notFound();

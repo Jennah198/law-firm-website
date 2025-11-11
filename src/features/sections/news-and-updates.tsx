@@ -9,7 +9,7 @@ export function NewsAndUpdates() {
     {
       title: "Ethiopia begins selling stakes in state-owned company",
       description:
-        "Ethiopia's state-owned telecommunications company has started selling shares to the public, in a move aimed at establishing a new national stock market.",
+        "Ethiopia&apos;s state-owned telecommunications company has started selling shares to the public, in a move aimed at establishing a new national stock market.",
       image: "/intelectualproperty.jpg",
       category: "Corporate Law",
       readTime: "5 min read",
@@ -17,7 +17,7 @@ export function NewsAndUpdates() {
     {
       title: "Government to Levy Tax on Social Media Income",
       description:
-        "Ethiopia's Social Media Tax targets TikTok too. Social Media. By: Getahun Tsegaye Staff Reporter. Addis Ababa, Ethiopia – Ethiopia plans to...",
+        "Ethiopia&apos;s Social Media Tax targets TikTok too. Social Media. By: Getahun Tsegaye Staff Reporter. Addis Ababa, Ethiopia – Ethiopia plans to...",
       image: "/EmploymentandLabor.jpg",
       category: "Employment Law",
       readTime: "7 min read",
@@ -25,7 +25,7 @@ export function NewsAndUpdates() {
     {
       title: "Ethiopia enacts long-awaited startup law to boost digital economy",
       description:
-        "Ethiopia has finally approved its long-anticipated startup law, marking a pivotal moment for the country's growing tech and innovation landscape.",
+        "Ethiopia has finally approved its long-anticipated startup law, marking a pivotal moment for the country&apos;s growing tech and innovation landscape.",
       image: "/realstates.jpg",
       category: "Real Estate Law",
       readTime: "6 min read",

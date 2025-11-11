@@ -12,7 +12,7 @@ const insights = [
     slug: "capital-and-compliance-insights",
     logo: "/insights/investment.jpg",
     description:
-      "This service is tailored to guide organizations through the complexities of corporate governance and investment. SHLO's dedicated team will help you design governance structures that attract sustainable investment and drive long-term financial success, while ensuring robust legal and regulatory compliance.",
+      "This service is tailored to guide organizations through the complexities of corporate governance and investment. SHLO&apos;s dedicated team will help you design governance structures that attract sustainable investment and drive long-term financial success, while ensuring robust legal and regulatory compliance.",
     expertise: "Corporate Law, M&A, Business Strategy",
   },
   {

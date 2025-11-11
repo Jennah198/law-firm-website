@@ -71,7 +71,7 @@ Made By The New Arbitration And Conciliation Proclamation</h2>
               <h3 className="text-xl font-semibold mb-2 text-secondary">Introduction</h3>
               <p className="text-sm leading-relaxed text-foreground">
                 Read expert insights on a variety of legal topics. From business and family law to criminal defense, get the knowledge you need to stay informed.
-                The Arbitration and Conciliation Working Procedure Proclamation No. 1237/2021 (the Proclamation) marks a significant modernization of Ethiopia's Alternative Dispute Resolution (ADR) framework, largely replacing the scattered provisions previously found in the Civil Code and Civil Procedure Code. This new law aims to bring Ethiopia's arbitration practice in line with international standards, particularly the UNCITRAL Model Law, to boost investor confidence and establish the country as a regional arbitration hub.
+                The Arbitration and Conciliation Working Procedure Proclamation No. 1237/2021 (the Proclamation) marks a significant modernization of Ethiopia&apos;s Alternative Dispute Resolution (ADR) framework, largely replacing the scattered provisions previously found in the Civil Code and Civil Procedure Code. This new law aims to bring Ethiopia&apos;s arbitration practice in line with international standards, particularly the UNCITRAL Model Law, to boost investor confidence and establish the country as a regional arbitration hub.
               </p>
             </section>
 
@@ -98,7 +98,7 @@ Made By The New Arbitration And Conciliation Proclamation</h2>
                   <ul className="list-disc list-inside ml-4 space-y-1">
                     <li>The Proclamation creates a presumption of finality for arbitral awards, a major shift from the old regime which generally allowed for an appeal unless explicitly waived by the parties.</li>
                     <li>Judicial review is now primarily limited to setting aside an award based on grounds similar to the UNCITRAL Model Law (e.g., incapacity of a party, invalid agreement, due process violations).</li>
-                    <li>However, a limited right to apply for cassation (review by the Supreme Court Cassation Bench) remains available for cases involving a "fundamental or basic error of law," though parties may agree to waive this right.</li>
+                    <li>However, a limited right to apply for cassation (review by the Supreme Court Cassation Bench) remains available for cases involving a &quot;fundamental or basic error of law,&quot; though parties may agree to waive this right.</li>
                   </ul>
                 </div>
 
@@ -140,7 +140,7 @@ Made By The New Arbitration And Conciliation Proclamation</h2>
             <section>
               <h3 className="text-xl font-semibold mb-2 text-secondary">Conclusion</h3>
               <p className="text-sm leading-relaxed text-foreground">
-                The Arbitration and Conciliation Proclamation No. 1237/2021 represents a monumental stride toward modernizing Ethiopia's legal system for commercial dispute resolution. By aligning domestic law with international best practices like the UNCITRAL Model Law, it strengthens the autonomy of the arbitral process, enhances the finality of awards, and fosters a more predictable legal environment for both local and international investors. While its long-term impact will be fully realized through practical application and judicial interpretation, the Proclamation has laid a robust foundation for Ethiopia to become a more attractive venue for international commercial arbitration.
+                The Arbitration and Conciliation Proclamation No. 1237/2021 represents a monumental stride toward modernizing Ethiopia&apos;s legal system for commercial dispute resolution. By aligning domestic law with international best practices like the UNCITRAL Model Law, it strengthens the autonomy of the arbitral process, enhances the finality of awards, and fosters a more predictable legal environment for both local and international investors. While its long-term impact will be fully realized through practical application and judicial interpretation, the Proclamation has laid a robust foundation for Ethiopia to become a more attractive venue for international commercial arbitration.
               </p>
             </section>
 

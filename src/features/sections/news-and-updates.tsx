@@ -12,7 +12,6 @@ export function NewsAndUpdates() {
         "Ethiopia&apos;s state-owned telecommunications company has started selling shares to the public, in a move aimed at establishing a new national stock market.",
       image: "/intelectualproperty.jpg",
       category: "Corporate Law",
-      readTime: "5 min read",
     },
     {
       title: "Government to Levy Tax on Social Media Income",
@@ -20,7 +19,6 @@ export function NewsAndUpdates() {
         "Ethiopia&apos;s Social Media Tax targets TikTok too. Social Media. By: Getahun Tsegaye Staff Reporter. Addis Ababa, Ethiopia – Ethiopia plans to...",
       image: "/EmploymentandLabor.jpg",
       category: "Employment Law",
-      readTime: "7 min read",
     },
     {
       title: "Ethiopia enacts long-awaited startup law to boost digital economy",
@@ -28,7 +26,6 @@ export function NewsAndUpdates() {
         "Ethiopia has finally approved its long-anticipated startup law, marking a pivotal moment for the country&apos;s growing tech and innovation landscape.",
       image: "/realstates.jpg",
       category: "Real Estate Law",
-      readTime: "6 min read",
     },
   ]
 
@@ -71,16 +68,10 @@ export function NewsAndUpdates() {
                 </div>
 
                 <div className="text-left">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-sm text-[hsl(var(--muted-foreground))]">
-                      {newsItem.readTime}
-                    </span>
-                  </div>
 
                   <h3 className="text-xl font-semibold text-[hsl(var(--secondary))] mb-3 leading-tight">
                     {newsItem.title}
                   </h3>
-
                   <p className="text-[hsl(var(--muted-foreground))] leading-relaxed text-sm mb-6">
                     {newsItem.description}
                   </p>

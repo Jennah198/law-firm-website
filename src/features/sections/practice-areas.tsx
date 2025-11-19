@@ -150,7 +150,7 @@ export function PracticeAreas() {
             description="Ethiopia offers significant investment opportunities, driven by economic reforms, tax incentives, and trade liberalization. Navigating the legal framework requires expert guidance to maximize benefits while ensuring compliance with local and international regulations. At SHLO Law Office, we help investors structure deals, secure licenses, optimize tax benefits, and resolve disputes, ensuring a smooth investment journey."
             services={investmentLawServices}
             contactDescription="📞 Contact us for a free consultation and unlock Ethiopia's investment potential with our strategic legal guidance."
-            imageSrc="/investment.jpg"
+            imageSrc="/practice-areas/investment.jpg"
             imageAlt="Investment law professionals reviewing documents"
           />
 
@@ -161,7 +161,7 @@ export function PracticeAreas() {
             description="Ethiopia's corporate legal framework supports structured business development, investor protection, and operational compliance. Whether launching a startup, managing expansion, or overseeing mergers and acquisitions, SHLO Law Office provides expert legal counsel to ensure businesses navigate regulations effectively and minimize risks."
             services={CorporateLawServices}
             contactDescription="📞 Contact us today to ensure your business operations align perfectly with Ethiopia's dynamic corporate environment."
-            imageSrc="/corporate.jpg"
+            imageSrc="/practice-areas/corporate.jpg"
             imageAlt="Corporate lawyers in a business meeting"
           />
 
@@ -172,7 +172,7 @@ export function PracticeAreas() {
             description="Navigating Ethiopia's tax system and customs regulations is essential for businesses and investors looking to optimize financial planning and ensure compliance. SHLO Law Office provides expert legal counsel on taxation, customs duties, and regulatory frameworks, helping businesses mitigate risks, maximize benefits, and resolve disputes effectively."
             services={TaxAndCustomsLawServices}
             contactDescription="📞 Secure your tax efficiency and compliance—contact SHLO Law Office for expert advice today."
-            imageSrc="/taxandcustom.jpg"
+            imageSrc="/practice-areas/taxandcustom.jpg"
             imageAlt="Tax and customs legal documentation"
           />
 

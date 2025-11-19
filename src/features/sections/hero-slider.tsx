@@ -13,12 +13,12 @@ interface SlideData {
 }
 
 const slides: SlideData[] = [
-  { id: 1, title: "Corporate", subtitle: "Law in Ethiopia", imageSrc: "/corporate.jpg" },
-  { id: 2, title: "Investment", subtitle: "Law in Ethiopia", imageSrc: "/investment.jpg" },
-  { id: 3, title: "Int. Trade", subtitle: "Law in Ethiopia", imageSrc: "/InternationalTradeCommercialLaw.jpg" },
-  { id: 4, title: "Mergers & Acquisitions", subtitle: "Law in Ethiopia", imageSrc: "/mergandaqusition.jpg" },
-  { id: 5, title: "Regulatory", subtitle: "Compliance", imageSrc: "/regulatory.jpg" },
-  { id: 6, title: "Strategic", subtitle: "Legal Support", imageSrc: "/FintecLaws.jpg" },
+  { id: 1, title: "Corporate", subtitle: "Law in Ethiopia", imageSrc: "/hero-slider/corporate.jpg" },
+  { id: 2, title: "Investment", subtitle: "Law in Ethiopia", imageSrc: "/hero-slider/investment.jpg" },
+  { id: 3, title: "Int. Trade", subtitle: "Law in Ethiopia", imageSrc: "/hero-slider/InternationalTradeCommercialLaw.jpg" },
+  { id: 4, title: "Mergers & Acquisitions", subtitle: "Law in Ethiopia", imageSrc: "/hero-slider/mergandaqusition.jpg" },
+  { id: 5, title: "Regulatory", subtitle: "Compliance", imageSrc: "/hero-slider/regulatory.jpg" },
+  { id: 6, title: "Strategic", subtitle: "Legal Support", imageSrc: "/hero-slider/FintecLaws.jpg" },
 ]
 
 export function HeroSlider() {

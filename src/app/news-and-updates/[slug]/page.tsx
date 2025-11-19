@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Footer } from "@/components/footer"
 import { ContactSection } from "@/features/sections/contact-section"
+import { Navigation } from "@/components/navigation";
 
 // Update the interface to use Promise
 interface Params {
@@ -26,38 +27,43 @@ export default async function NewsDetailPage({ params }: Params) {
   if (!newsItem) return notFound();
 
   return (
-    <div className="w-full flex justify-center bg-background p-6">
-      <div className="max-w-7xl w-full space-y-8 text-foreground">
+    <div className="bg-background mt-[80px]">
+
+      {/* 🟩 NAVBAR */}
+      <Navigation />
+
+      {/* 🟦 MAIN CONTENT (CENTERED, NO WHITE GAPS) */}
+      <div className="max-w-7xl mx-auto px-6 py-12 space-y-12 text-foreground">
+
         {/* Header - Centered */}
-        <div className="pt-8 text-center">
+        <div className="text-center">
           <h1 className="text-3xl font-bold text-secondary mb-4">News and Updates</h1>
         </div>
 
-        {/* Title - Centered */}
-        <div className="text-left">
-          <h2 className="text-4xl font-bold leading-tight text-secondary">Legal Update: Highlights Of Key Changes And Introductions
-Made By The New Arbitration And Conciliation Proclamation</h2>
-        </div>
+        {/* Title */}
+        <h2 className="text-4xl font-bold leading-tight text-secondary">
+          {newsItem.title}
+        </h2>
 
-        {/* Share Buttons - Centered */}
-        <div className="flex justify-left space-x-3">
+        {/* Share Buttons */}
+        <div className="flex justify-start space-x-3">
           <Button variant="secondary" className="px-3 py-1 bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground">Font Size</Button>
           <Button variant="secondary" className="px-3 py-1 bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground">Print</Button>
           <Button variant="secondary" className="px-3 py-1 bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground">Email</Button>
           <Button variant="secondary" className="px-3 py-1 bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground">Comment</Button>
         </div>
 
-        {/* Rating - Centered */}
-        <div className="flex justify-left items-center space-x-4 text-sm text-muted-foreground">
+        {/* Rating */}
+        <div className="flex justify-start items-center space-x-4 text-sm text-muted-foreground">
           <span>Rate This Item</span>
           <span>⭐⭐⭐⭐⭐ (23 votes)</span>
         </div>
 
         {/* Split layout with proper gaps */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           {/* Left Column */}
-          <div className="space-y-8">
-            {/* Image - Left */}
+          <div className="space-y-10">
+            {/* Image */}
             <div className="w-full h-48 rounded-md overflow-hidden shadow-md">
               <Image
                 src={newsItem.image || "/placeholder.svg"}
@@ -68,18 +74,18 @@ Made By The New Arbitration And Conciliation Proclamation</h2>
               />
             </div>
 
-            {/* Introduction - Left */}
+            {/* Introduction */}
             <section>
-              <h3 className="text-xl font-semibold mb-2 text-secondary">Introduction</h3>
+              <h3 className="text-xl font-semibold mb-3 text-secondary">Introduction</h3>
               <p className="text-sm leading-relaxed text-foreground">
                 Read expert insights on a variety of legal topics. From business and family law to criminal defense, get the knowledge you need to stay informed.
                 The Arbitration and Conciliation Working Procedure Proclamation No. 1237/2021 (the Proclamation) marks a significant modernization of Ethiopia&apos;s Alternative Dispute Resolution (ADR) framework, largely replacing the scattered provisions previously found in the Civil Code and Civil Procedure Code. This new law aims to bring Ethiopia&apos;s arbitration practice in line with international standards, particularly the UNCITRAL Model Law, to boost investor confidence and establish the country as a regional arbitration hub.
               </p>
             </section>
 
-            {/* Key Changes - Left */}
+            {/* Key Changes */}
             <section>
-              <h3 className="text-xl font-semibold mb-2 text-secondary">Key Changes</h3>
+              <h3 className="text-xl font-semibold mb-3 text-secondary">Key Changes</h3>
               <div className="space-y-4 text-sm text-foreground">
                 <p>The new Proclamation introduces several pivotal changes that redefine the landscape of arbitration and conciliation in Ethiopia:</p>
                 
@@ -137,16 +143,16 @@ Made By The New Arbitration And Conciliation Proclamation</h2>
           </div>
 
           {/* Right Column */}
-          <div className="space-y-8">
-            {/* Conclusion - Right */}
+          <div className="space-y-10">
+            {/* Conclusion */}
             <section>
-              <h3 className="text-xl font-semibold mb-2 text-secondary">Conclusion</h3>
+              <h3 className="text-xl font-semibold mb-3 text-secondary">Conclusion</h3>
               <p className="text-sm leading-relaxed text-foreground">
                 The Arbitration and Conciliation Proclamation No. 1237/2021 represents a monumental stride toward modernizing Ethiopia&apos;s legal system for commercial dispute resolution. By aligning domestic law with international best practices like the UNCITRAL Model Law, it strengthens the autonomy of the arbitral process, enhances the finality of awards, and fosters a more predictable legal environment for both local and international investors. While its long-term impact will be fully realized through practical application and judicial interpretation, the Proclamation has laid a robust foundation for Ethiopia to become a more attractive venue for international commercial arbitration.
               </p>
             </section>
 
-            {/* Related Articles - Right */}
+            {/* Related Articles */}
             <Card className="bg-accent">
               <CardContent className="p-4 text-sm">
                 <h4 className="font-semibold text-lg mb-3 text-secondary">Related Articles</h4>
@@ -164,18 +170,20 @@ Made By The New Arbitration And Conciliation Proclamation</h2>
               </CardContent>
             </Card>
 
-            {/* Image Placeholder - Right */}
+            {/* Image Placeholder */}
             <div className="w-full h-48 bg-accent rounded-md" />
             
-            {/* Copyright - Right */}
+            {/* Copyright */}
             <p className="text-xs text-muted-foreground">
               Copyright ©2025 Placeholder Legal Consulting. All rights reserved.
             </p>
           </div>
         </div>
-        <ContactSection />
-        <Footer />
       </div>
+
+      {/* 🟪 FULL-WIDTH SECTIONS */}
+      <ContactSection />
+      <Footer />
     </div>
   );
 }

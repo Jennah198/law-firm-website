@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation"
 import { ArrowLeft } from "lucide-react"
 import Image from "next/image"
+import { Navigation } from "@/components/navigation"
 import { ContactSection } from "@/features/sections/contact-section"
 import { Footer } from "@/components/footer"
 
@@ -11,23 +12,24 @@ export default function WhoWeArePage() {
 
   return (
     <main className="min-h-screen bg-background">
+      <Navigation />
       {/* Simple Back Arrow */}
       <button
         onClick={() => router.back()}
-        className="fixed top-20 left-4 z-40 p-2 bg-[hsl(var(--secondary))]/80 backdrop-blur-sm rounded-full shadow-lg hover:bg-[hsl(var(--primary))] transition-colors"
+        className="fixed top-40 left-4 z-40 p-2 bg-[hsl(var(--secondary))]/80 backdrop-blur-sm rounded-full shadow-lg hover:bg-[hsl(var(--primary))] transition-colors"
       >
         <ArrowLeft className="h-5 w-5 text-white" />
       </button>
 
-      <section className="py-16">
+      <section className="py-16 mt-[90px]">
         <div className="max-w-4xl mx-auto px-4 text-justify">
           <div className="mx-auto mb-8 flex items-center justify-center">
-            <div className="relative w-96 h-64 bg-muted border border-dashed border-border flex items-center justify-center overflow-hidden">
+            <div className="relative w-120 h-96 bg-muted border border-dashed border-border flex items-center justify-center overflow-hidden">
               <Image
-                src="/shOfficeFront.jpg"
+                src="/sadam-welcome-detail.png"
                 alt="SHLO Law Office Front"
-                width={384}
-                height={256}
+                width={600}
+                height={400}
                 className="w-full h-full object-cover"
                 priority
               />

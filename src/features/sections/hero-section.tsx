@@ -7,9 +7,9 @@ import Link from "next/link"
 
 export function HeroSection() {
   return (
-    <section className="relative h-screen flex items-center justify-center">
+    <section className="py-20 bg-[hsl(var(--muted))] relative h-screen flex items-center justify-center">
       {/* Background Image */}
-      <div className="absolute inset-0 z-0">
+      {/* <div className="absolute inset-0 z-0">
         <Image
           src="/construction.jpg"
           alt="Hero Background"
@@ -20,7 +20,7 @@ export function HeroSection() {
           className="object-cover"
           priority
         />
-      </div>
+      </div> */}
 
       {/* Content */}
       <div className="container mx-auto px-4 z-10">
@@ -83,12 +83,12 @@ export function HeroSection() {
 
           {/* Right Column - Image */}
           <div className="relative flex justify-center">
-            <div className="relative w-96 h-80 md:w-[300px] md:h-[450px] lg:w-[300px] lg:h-[500px]">
+            <div className="relative w-96 h-80 md:w-[400px] md:h-[450px] lg:w-[400px] lg:h-[600px]">
               <Image
-                src="/shOfficeFront.jpg"
+                src="/sadam-hero.png"
                 alt="Professional Legal Team"
                 fill
-                className="object-cover rounded-none shadow-2xl"
+                className="object-cover rounded-none"
               />
             </div>
           </div>

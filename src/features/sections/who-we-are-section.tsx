@@ -44,9 +44,9 @@ export function WhoWeAreSection() {
 
           {/* Right side - Clean Image */}
           <div className="relative w-full">
-            <div className="w-full h-[400px] lg:h-[500px] overflow-hidden">
+            <div className="w-full h-[500px] lg:h-[700px] overflow-hidden">
               <Image
-                src="/shOfficeRight.jpg"
+                src="/sadam-welcome-first.png"
                 alt="Professional law firm team"
                 fill
                 className="object-cover"

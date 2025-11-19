@@ -72,7 +72,7 @@ export function ServicesSection() {
         <div className="text-center mt-12">
           <Link
             href="/services"
-            className="inline-block px-6 py-3 rounded-md font-medium bg-[hsl(var(--accent))] text-[hsl(var(--secondary))] transition-colors hover:bg-[#2F3A56] hover:text-white"
+            className="inline-block px-6 py-3 rounded-md font-medium bg-[hsl(var(--primary))] text-[hsl(var(--secondary))] transition-colors hover:bg-[#2F3A56] hover:text-white"
           >
             Explore More Services →
           </Link>

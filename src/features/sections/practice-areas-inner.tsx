@@ -110,11 +110,11 @@ export function PracticeAreasInner() {
   ]
   
   return (
-    <section className="min-h-screen bg-[hsl(var(--muted))] flex flex-col items-center py-20 px-6">
+    <section className="min-h-screen mt-20 bg-[hsl(var(--muted))] flex flex-col items-center py-20 px-6">
       {/* Back Button */}
       <button
         onClick={() => router.back()}
-        className="fixed top-20 left-4 z-40 p-2 bg-[hsl(var(--secondary))]/80 backdrop-blur-sm rounded-full shadow-lg hover:bg-[hsl(var(--primary))] transition-colors"
+        className="fixed top-25 left-4 z-40 p-2 bg-[hsl(var(--secondary))]/80 backdrop-blur-sm rounded-full shadow-lg hover:bg-[hsl(var(--primary))] transition-colors"
       >
         <ArrowLeft className="h-5 w-5 text-white" />
       </button>

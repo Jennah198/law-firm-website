@@ -11,7 +11,6 @@ export default function CsrPage() {
         "Ethiopia's state-owned telecommunications company has started selling shares to the public, in a move aimed at establishing a new national stock market.",
       image: "/assets.jpg",
       category: "Corporate Law",
-      readTime: "5 min read",
       link: "/csr/ethiopia-company-stakes",
     },
     {
@@ -20,7 +19,6 @@ export default function CsrPage() {
         "Stay informed about the latest changes in employment legislation, workplace policies, and employee rights. Our expert analysis helps employers understand their obligations and implement compliant practices in today's dynamic work environment.",
       image: "/EmploymentandLabor.jpg",
       category: "Employment Law",
-      readTime: "7 min read",
       link: "/csr/employment-law-updates",
     },
     {
@@ -29,7 +27,6 @@ export default function CsrPage() {
         "Explore the intricacies of real estate law with our detailed overview of property transactions, contract negotiations, due diligence processes, and risk mitigation strategies for both commercial and residential real estate deals.",
       image: "/realstates.jpg",
       category: "Real Estate Law",
-      readTime: "6 min read",
       link: "/csr/real-estate-framework",
     },
   ]
@@ -76,11 +73,11 @@ export default function CsrPage() {
 
                 {/* Content */}
                 <div className="text-left flex-1 flex flex-col">
-                  <div className="flex items-center justify-between mb-3">
+                  {/* <div className="flex items-center justify-between mb-3">
                     <span className="text-sm text-[hsl(var(--muted-foreground))]">
                       {csr.readTime}
                     </span>
-                  </div>
+                  </div> */}
 
                   <h3 className="text-xl font-semibold text-[hsl(var(--secondary))] mb-3 leading-tight">
                     {csr.title}

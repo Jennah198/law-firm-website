@@ -3,6 +3,7 @@ import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
 import { ContactSection } from "@/features/sections/contact-section"
 import { Footer } from "@/components/footer"
+import { Navigation } from "@/components/navigation"
 
 const practiceAreasData = {
   "investment-law": {
@@ -113,7 +114,8 @@ export default async function PracticeAreaDetail({ params }: Params) {
 
   return (
     <main className="min-h-screen bg-muted">
-      <section className="py-14">
+      <Navigation />
+      <section className="py-14 mt-20">
         <div className="max-w-6xl mx-auto px-4">
           {/* Banner Image */}
           <div className="relative w-full h-64 rounded-xl overflow-hidden mb-12">
@@ -165,7 +167,7 @@ export default async function PracticeAreaDetail({ params }: Params) {
               <CardContent className="p-6 flex flex-col items-center">
                 <div className="relative w-40 h-56 bg-accent rounded-md overflow-hidden mb-4">
                   <Image
-                    src="/team/sadam-hussein.jpg"
+                    src="/sadam-hero.png"
                     alt="Sadam Hussein"
                     fill
                     className="object-cover"

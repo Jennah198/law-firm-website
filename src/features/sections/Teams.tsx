@@ -20,9 +20,9 @@ export function Teams() {
         {/* Team Member Card */}
         <div className="bg-[hsl(var(--card))] border border-[hsl(var(--border))] rounded-lg p-6 md:p-8 text-left flex flex-col md:flex-row items-center md:items-start gap-6 hover:shadow-md transition-shadow">
           {/* Real Image Placeholder */}
-          <div className="w-40 h-52 bg-[hsl(var(--accent))] border border-[hsl(var(--border))] rounded-md overflow-hidden">
+          <div className="w-40 h-52 bg-[hsl(var(--accent))] border border-[hsl(var(--border))] rounded-none overflow-hidden">
             <Image
-              src="/practice-areas/Drll.jpg"
+              src="/sadam-teams.jpg"
               alt="Sadam Hussein - Principal & General Attorney"
               width={160}
               height={208}

@@ -17,7 +17,7 @@ export function NewsAndUpdates() {
       title: "Government to Levy Tax on Social Media Income",
       description:
         "Ethiopia&apos;s Social Media Tax targets TikTok too. Social Media. By: Getahun Tsegaye Staff Reporter. Addis Ababa, Ethiopia – Ethiopia plans to...",
-      image: "/EmploymentandLabor.jpg",
+      image: "/practice-areas/EmploymentandLabor.jpg",
       category: "Employment Law",
     },
     {

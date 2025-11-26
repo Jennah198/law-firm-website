@@ -86,7 +86,7 @@ export function HeroSection() {
             <div className="relative w-96 h-80 md:w-[400px] md:h-[450px] lg:w-[400px] lg:h-[600px]">
               <Image
                 src="/sadam-hero.png"
-                alt="Professional Legal Team"
+                alt="Sadam Hussein"
                 fill
                 className="object-cover rounded-none"
               />

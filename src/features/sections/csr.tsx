@@ -17,7 +17,7 @@ export default function CsrPage() {
       title: "Government to Levy Tax on Social Media Income",
       description:
         "Stay informed about the latest changes in employment legislation, workplace policies, and employee rights. Our expert analysis helps employers understand their obligations and implement compliant practices in today's dynamic work environment.",
-      image: "/EmploymentandLabor.jpg",
+      image: "/practice-areas/EmploymentandLabor.jpg",
       category: "Employment Law",
       link: "/csr/employment-law-updates",
     },

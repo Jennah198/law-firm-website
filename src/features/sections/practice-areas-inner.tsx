@@ -50,7 +50,7 @@ export function PracticeAreasInner() {
     {
       title: "Energy & Natural Resources",
       description: "Expert Legal Solutions for Ethiopia's Expanding Energy & Resource Sectors",
-      image: "/practice-areas/energyand Construction.jpg",
+      image: "/practice-areas/energyand construction.jpg",
       href: "/practice-areas/energy-natural-resources",
     },
     {

@@ -47,7 +47,7 @@ export function WhoWeAreSection() {
             <div className="w-full h-[500px] lg:h-[700px] overflow-hidden">
               <Image
                 src="/sadam-welcome-first.png"
-                alt="Professional law firm team"
+                alt="Sadam Hussien"
                 fill
                 className="object-cover"
                 priority

@@ -1,114 +1,111 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from "lucide-react"
+import { Mail, Phone, MapPin, Clock } from "lucide-react"
+
+const quickLinks = [
+  { href: "/who-we-are", label: "About Us" },
+  { href: "/services", label: "Services" },
+  { href: "/teams", label: "Our Team" },
+  { href: "/insights", label: "Insights" },
+  { href: "/news-and-updates", label: "News & Updates" },
+  { href: "/csr", label: "CSR" },
+  { href: "/contact", label: "Contact" },
+]
+
+const practiceLinks = [
+  { href: "/practice-areas/corporate-law", label: "Corporate Law" },
+  { href: "/practice-areas/investment-law", label: "Investment Law" },
+  { href: "/practice-areas/tax-customs-law", label: "Tax & Customs" },
+  { href: "/practice-areas/mergers-acquisitions", label: "Mergers & Acquisitions" },
+  { href: "/practice-areas/dispute-resolution", label: "Dispute Resolution" },
+  { href: "/practice-areas-inner", label: "All Practice Areas" },
+]
 
 export function Footer() {
+  const year = new Date().getFullYear()
+
   return (
-    <footer className="bg-[hsl(var(--secondary))] text-white">
-      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          {/* Left: Branding & Social */}
-          <div className="space-y-4">
-            <div className="flex items-start space-x-4">
-              {/* Local logo */}
-              <div className="shrink-0">
-                <Image
-                  src={"/logo-light.svg"}
-                  alt="SHLO Logo"
-                  width={64}
-                  height={64}
-                  className="rounded"
-                />
-              </div>
-              <div>
-                <div className="text-sm text-white">
-                  Strategic Legal Excellence for Corporate & Investment Success
-                </div>
-              </div>
-            </div>
-
-            <div className="font-bold text-[hsl(var(--primary))]">Sadam Hussein Law Office</div>
-            <p className="text-sm text-white leading-relaxed">
-              Join our socials and stay connected with us for more exciting updates and news about our services and team.
+    <footer className="bg-brand-navy-950 text-white/75">
+      <div className="container mx-auto px-4 pb-10 pt-16">
+        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-12">
+          <div className="lg:col-span-4">
+            <Link href="/" className="flex items-center gap-3">
+              <Image src="/logo-dark.svg" alt="" width={48} height={48} className="rounded" />
+              <span className="leading-tight">
+                <span className="block font-serif text-xl font-bold tracking-[0.3em] text-white">SHLO</span>
+                <span className="block text-[11px] uppercase tracking-[0.12em] text-white/60">Sadam Hussein Law Office</span>
+              </span>
+            </Link>
+            <p className="mt-6 max-w-sm text-sm leading-relaxed">
+              Strategic legal excellence for corporate and investment success. A full-service law office serving
+              investors, businesses and institutions across Ethiopia.
             </p>
-
-            <div className="flex items-center space-x-3 pt-1">
-              <Link href="#" aria-label="LinkedIn" className="group">
-                <Linkedin className="h-5 w-5 stroke-[1.75] text-white group-hover:text-[hsl(var(--primary))] transition-colors" />
-              </Link>
-              <Link href="#" aria-label="Facebook" className="group">
-                <Facebook className="h-5 w-5 stroke-[1.75] text-white group-hover:text-[hsl(var(--primary))] transition-colors" />
-              </Link>
-              <Link href="#" aria-label="Twitter" className="group">
-                <Twitter className="h-5 w-5 stroke-[1.75] text-white group-hover:text-[hsl(var(--primary))] transition-colors" />
-              </Link>
-              <Link href="#" aria-label="Instagram" className="group">
-                <Instagram className="h-5 w-5 stroke-[1.75] text-white group-hover:text-[hsl(var(--primary))] transition-colors" />
-              </Link>
-            </div>
           </div>
 
-          {/* Middle: Quick Links */}
-          <div className="text-left">
-            <div className="text-white font-bold mb-4">Quick Links</div>
-            <ul className="space-y-2 text-white">
-              <li><Link href="#home" className="hover:text-[hsl(var(--primary))] transition-colors">Home</Link></li>
-              <li><Link href="#about" className="hover:text-[hsl(var(--primary))] transition-colors">About</Link></li>
-              <li><Link href="#services" className="hover:text-[hsl(var(--primary))] transition-colors">Practice Area & Service</Link></li>
-              <li><Link href="#teams" className="hover:text-[hsl(var(--primary))] transition-colors">Teams</Link></li>
-              <li><Link href="#csr" className="hover:text-[hsl(var(--primary))] transition-colors">CSR</Link></li>
-              <li><Link href="#contact" className="hover:text-[hsl(var(--primary))] transition-colors">Contacts</Link></li>
+          <div className="lg:col-span-2">
+            <h2 className="mb-5 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-brand-gold-400">Firm</h2>
+            <ul className="space-y-3 text-sm">
+              {quickLinks.map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href} className="transition-colors hover:text-brand-gold-400">{l.label}</Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Right: Contact & Map */}
-          <div className="text-left space-y-4">
-            <div className="text-white font-bold">Contact Us:</div>
-            <div className="space-y-2">
-              <div className="flex items-center justify-left space-x-2">
-                <Phone className="h-4 w-4 text-white" />
-                <span className="text-white">+251 91 369 3679</span>
-              </div>
-              <div className="flex items-center justify-left space-x-2">
-                <Mail className="h-4 w-4 text-white" />
-                <span className="text-white">contact@sadamhusseiinlaw.com</span>
-              </div>
-              <div className="flex items-start justify-left space-x-2">
-                <MapPin className="h-4 w-4 text-white mt-1" />
-                <span className="text-white max-w-xs text-sm">
-                  Meskel Flower, Gaben Street, Etalemaw A. Bldg, 5th Floor, Office No. 502, Addis Ababa, Ethiopia
-                </span>
-              </div>
-            </div>
+          <div className="lg:col-span-3">
+            <h2 className="mb-5 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-brand-gold-400">Practice Areas</h2>
+            <ul className="space-y-3 text-sm">
+              {practiceLinks.map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href} className="transition-colors hover:text-brand-gold-400">{l.label}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-            <div className="pt-2">
-              <div className="overflow-hidden rounded-md ring-1 ring-[hsl(var(--border))]">
-                <iframe
-                  title="SHLO Location"
-                  src="https://www.google.com/maps?q=MsekFlower%2C%20Addis%20Ababa&output=embed"
-                  loading="lazy"
-                  className="w-full h-36"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-              </div>
+          <div className="lg:col-span-3">
+            <h2 className="mb-5 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-brand-gold-400">Contact</h2>
+            <ul className="space-y-4 text-sm">
+              <li>
+                <a href="tel:+251913693679" className="flex items-center gap-3 hover:text-brand-gold-400">
+                  <Phone className="h-4 w-4 shrink-0 text-brand-gold-400" /> +251 91 369 3679
+                </a>
+              </li>
+              <li>
+                <a href="mailto:info@sadamhusseinlaw.com" className="flex items-center gap-3 hover:text-brand-gold-400">
+                  <Mail className="h-4 w-4 shrink-0 text-brand-gold-400" /> info@sadamhusseinlaw.com
+                </a>
+              </li>
+              <li className="flex items-start gap-3">
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-gold-400" />
+                <span>Meskel Flower, Gaben Street, Etalemaw A. Bldg, 5th Floor, Office No. 502, Addis Ababa, Ethiopia</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <Clock className="h-4 w-4 shrink-0 text-brand-gold-400" /> Mon–Fri: 8:00 AM – 6:00 PM
+              </li>
+            </ul>
+            <div className="mt-6 overflow-hidden ring-1 ring-white/10">
+              <iframe
+                title="Sadam Hussein Law Office location"
+                src="https://www.google.com/maps?q=Meskel%20Flower%2C%20Addis%20Ababa&output=embed"
+                loading="lazy"
+                className="h-36 w-full grayscale"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             </div>
           </div>
         </div>
 
-        {/* Links row */}
-        <div className="mt-8 text-left space-x-3 text-white">
-          <Link href="#" className="hover:text-[hsl(var(--primary))] transition-colors">Privacy Policy</Link>
-          <span className="opacity-70">|</span>
-          <Link href="#" className="hover:text-[hsl(var(--primary))] transition-colors">Terms</Link>
-          <span className="opacity-70">|</span>
-          <Link href="#" className="hover:text-[hsl(var(--primary))] transition-colors">Legal Notice</Link>
-        </div>
-
-        {/* Bottom Row */}
-        <div className="mt-10 border-t border-[hsl(var(--border))] pt-4">
-          <div className="text-center text-white space-y-1">
-            <div>© All Right is Reserved.</div>
-            <div>Developed by Golden Age Technology P.L.C.</div>
+        <div className="mt-14 border-t border-white/10 pt-8 text-xs leading-relaxed text-white/50">
+          <p className="max-w-4xl">
+            Disclaimer: The information on this website is for general informational purposes only and does not
+            constitute legal advice. Viewing this site or contacting us does not create an attorney–client
+            relationship.
+          </p>
+          <div className="mt-6 flex flex-col justify-between gap-2 sm:flex-row">
+            <p>© {year} Sadam Hussein Law Office. All rights reserved.</p>
+            <p>Developed by Golden Age Technology P.L.C.</p>
           </div>
         </div>
       </div>

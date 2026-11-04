@@ -1,95 +1,59 @@
 import Link from "next/link"
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
 import Image from "next/image"
+import { ArrowRight, Clock } from "lucide-react"
 import { slugify } from "@/lib/utils"
+import { newsItems } from "@/lib/new-and-updates"
 
-export function NewsAndUpdates() {
-  const newsItems = [
-    {
-      title: "Ethiopia begins selling stakes in state-owned company",
-      description:
-        "Ethiopia&apos;s state-owned telecommunications company has started selling shares to the public, in a move aimed at establishing a new national stock market.",
-      image: "/intelectualproperty.jpg",
-      category: "Corporate Law",
-    },
-    {
-      title: "Government to Levy Tax on Social Media Income",
-      description:
-        "Ethiopia&apos;s Social Media Tax targets TikTok too. Social Media. By: Getahun Tsegaye Staff Reporter. Addis Ababa, Ethiopia – Ethiopia plans to...",
-      image: "/practice-areas/EmploymentandLabor.jpg",
-      category: "Employment Law",
-    },
-    {
-      title: "Ethiopia enacts long-awaited startup law to boost digital economy",
-      description:
-        "Ethiopia has finally approved its long-anticipated startup law, marking a pivotal moment for the country&apos;s growing tech and innovation landscape.",
-      image: "/realstates.jpg",
-      category: "Real Estate Law",
-    },
-  ]
-
+export function NewsAndUpdates({ showAllLink = true, limit }: { showAllLink?: boolean; limit?: number }) {
+  const items = limit ? newsItems.slice(0, limit) : newsItems
   return (
-    <section id="news-and-updates" className="py-20 bg-[hsl(var(--muted))]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-[hsl(var(--secondary))] mb-6">
-            News & Updates
-          </h2>
-          <div className="max-w-4xl mx-auto space-y-4">
-            <p className="text-xl text-[hsl(var(--muted-foreground))] leading-relaxed">
-              Read expert insights on a variety of legal topics. From business and family law to criminal defense, get the knowledge you need to stay informed.
-            </p>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {newsItems.map((newsItem, index) => (
-            <Card
-              key={index}
-              className="border-0 shadow-md bg-[hsl(var(--card))] rounded-xl cursor-pointer transition-all duration-300 border border-[hsl(var(--border))]"
+    <section id="news-and-updates" className="bg-muted py-20 lg:py-28">
+      <div className="container mx-auto px-4">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-14 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+            <div className="max-w-2xl">
+              <p className="eyebrow mb-5">News &amp; Updates</p>
+              <h2 className="section-title">Legal developments in Ethiopia</h2>
+              <p className="section-lead mt-4">
+                Stay informed about regulatory changes and market developments affecting businesses and investors.
+              </p>
+            </div>
+            {showAllLink && (
+            <Link
+              href="/news-and-updates"
+              className="inline-flex shrink-0 items-center gap-2 text-sm font-semibold uppercase tracking-wider text-secondary transition-colors hover:text-primary dark:text-foreground"
             >
-              <CardContent className="p-6">
-                <div className="relative mb-6">
-                  <div className="w-full h-48 rounded-lg overflow-hidden shadow-lg">
-                    <Image
-                      src={newsItem.image || "/placeholder.svg"}
-                      alt={newsItem.title}
-                      width={300}
-                      height={200}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="absolute top-3 left-3">
-                    <span className="bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] text-xs font-semibold px-3 py-1 rounded-full">
-                      {newsItem.category}
-                    </span>
-                  </div>
+              All news <ArrowRight className="h-4 w-4" />
+            </Link>
+            )}
+          </div>
+
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+            {items.map((item) => (
+              <Link key={item.title} href={`/news-and-updates/${slugify(item.title)}`} className="group flex flex-col">
+                <div className="relative aspect-[16/10] overflow-hidden bg-accent">
+                  <Image
+                    src={item.image}
+                    alt=""
+                    fill
+                    sizes="(min-width: 768px) 33vw, 100vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
                 </div>
-
-                <div className="text-left">
-
-                  <h3 className="text-xl font-semibold text-[hsl(var(--secondary))] mb-3 leading-tight">
-                    {newsItem.title}
-                  </h3>
-                  <p className="text-[hsl(var(--muted-foreground))] leading-relaxed text-sm mb-6">
-                    {newsItem.description}
-                  </p>
-
-                  {/* ✅ Dynamic Read More Button */}
-                  <Link href={`/news-and-updates/${slugify(newsItem.title)}`}>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="border-2 border-[hsl(var(--primary))] text-[hsl(var(--primary))] hover:bg-[hsl(var(--secondary))] hover:text-white hover:border-[hsl(var(--secondary))] px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 bg-transparent"
-                    >
-                      Read More
-                    </Button>
-                  </Link>
+                <div className="flex items-center gap-3 pt-5 text-xs font-semibold uppercase tracking-wider">
+                  <span className="text-primary">{item.category}</span>
+                  <span className="h-3 w-px bg-border" />
+                  <span className="flex items-center gap-1 font-normal normal-case tracking-normal text-muted-foreground">
+                    <Clock className="h-3 w-3" /> {item.readTime}
+                  </span>
                 </div>
-              </CardContent>
-            </Card>
-          ))}
+                <h3 className="mt-3 text-xl font-semibold leading-snug text-secondary transition-colors group-hover:text-primary dark:text-foreground">
+                  {item.title}
+                </h3>
+                <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-muted-foreground">{item.description}</p>
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </section>

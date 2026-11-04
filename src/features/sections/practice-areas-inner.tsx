@@ -1,15 +1,8 @@
-"use client"
-
-import { useRouter } from "next/navigation"
-import { ArrowLeft } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-import { Card, CardContent } from "@/components/ui/card"
+import { ArrowUpRight } from "lucide-react"
 
 export function PracticeAreasInner() {
-  const router = useRouter()
-  
-  // ✅ Just edit this array to update the content or images.
   const practiceAreas = [
     {
       title: "Investment Law",
@@ -110,59 +103,37 @@ export function PracticeAreasInner() {
   ]
   
   return (
-    <section className="min-h-screen mt-20 bg-[hsl(var(--muted))] flex flex-col items-center py-20 px-6">
-      {/* Back Button */}
-      <button
-        onClick={() => router.back()}
-        className="fixed top-25 left-4 z-40 p-2 bg-[hsl(var(--secondary))]/80 backdrop-blur-sm rounded-full shadow-lg hover:bg-[hsl(var(--primary))] transition-colors"
-      >
-        <ArrowLeft className="h-5 w-5 text-white" />
-      </button>
+    <section className="bg-background py-20 lg:py-24">
+      <div className="container mx-auto px-4">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-12 max-w-2xl">
+            <p className="eyebrow mb-5">All Practice Areas</p>
+            <h2 className="section-title">Unlocking opportunities with strategic legal support</h2>
+          </div>
 
-      <div className="max-w-6xl w-full">
-        
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-[hsl(var(--primary))] mb-2">
-            Practice Areas
-          </h2>
-          <p className="text-[hsl(var(--secondary))] font-semibold">
-            Unlocking Opportunities with Strategic Legal Support
-          </p>
-        </div>
-
-        {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {practiceAreas.map((area, index) => (
-            <Card
-              key={index}
-              className="rounded-xl border border-[hsl(var(--border))] shadow-sm hover:shadow-md transition-shadow bg-[hsl(var(--card))] h-28"
-            >
-              <CardContent className="flex items-center gap-6 p-4 h-full">
-                {/* Larger Image Container */}
-                <div className="relative w-16 h-16 flex-shrink-0 rounded-lg overflow-hidden bg-[hsl(var(--accent))] group-hover:bg-[hsl(var(--primary))] transition-colors">
-                  <Image
-                    src={area.image}
-                    alt={`${area.title} icon`}
-                    fill
-                    className="object-cover"
-                    sizes="64px"
-                  />
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {practiceAreas.map((area) => (
+              <Link
+                key={area.href}
+                href={area.href}
+                className="group relative flex min-h-[280px] flex-col justify-end overflow-hidden bg-secondary"
+              >
+                <Image
+                  src={area.image}
+                  alt=""
+                  fill
+                  sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                  className="object-cover opacity-60 transition-all duration-500 group-hover:scale-105 group-hover:opacity-40"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-navy-950 via-brand-navy-950/60 to-transparent" />
+                <div className="relative p-5 text-white">
+                  <h3 className="text-lg font-semibold leading-snug">{area.title}</h3>
+                  <p className="mt-2 line-clamp-2 text-xs leading-relaxed text-white/75">{area.description}</p>
+                  <ArrowUpRight className="mt-4 h-5 w-5 text-brand-gold-400 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </div>
-                <div className="flex-1">
-                  <Link
-                    href={area.href}
-                    className="text-lg font-bold text-[hsl(var(--primary))] hover:text-[hsl(var(--secondary))] transition-colors block mb-1 group-hover:text-[hsl(var(--primary-foreground))]"
-                  >
-                    {area.title}
-                  </Link>
-                  <p className="text-sm font-semibold text-[hsl(var(--secondary))] leading-tight group-hover:text-[hsl(var(--primary-foreground))]">
-                    {area.description}
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </section>

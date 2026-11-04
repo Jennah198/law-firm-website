@@ -85,5 +85,51 @@
   body {
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-serif), Georgia, serif;
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background-color: hsl(var(--primary) / 0.3);
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Small gold label above section headings */
+  .eyebrow {
+    @apply inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-primary;
+  }
+  .eyebrow::before {
+    content: "";
+    @apply block h-px w-8 bg-primary;
+  }
+  .section-title {
+    @apply font-serif text-3xl font-semibold leading-tight text-secondary dark:text-foreground md:text-4xl;
+  }
+  .section-lead {
+    @apply text-base leading-relaxed text-muted-foreground md:text-lg;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }

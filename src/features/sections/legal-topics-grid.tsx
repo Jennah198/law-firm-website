@@ -1,4 +1,3 @@
-import { Card, CardContent } from "@/components/ui/card";
 
 export default function LegalTopicsGrid() {
   const topics = [
@@ -51,22 +50,29 @@ export default function LegalTopicsGrid() {
     ],
   ];
 
+  const all = topics.flat().sort((a, b) => a.localeCompare(b))
+
   return (
-    <div className="min-h-screen bg-sidebar-border flex items-center justify-center p-8">
-      <div className="max-w-6xl w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {topics.map((column, i) => (
-          <div key={i} className="flex flex-col space-y-1.5">
-            {column.map((topic, j) => (
-              <Card
-                key={j}
-                className="bg-secondary text-secondary-foreground  font-medium rounded shadow hover:shadow-md hover:bg-primary hover:text-primary-foreground transition-all duration-300"
-              >
-                <CardContent className="py-0 px-3 text-left">{topic}</CardContent>
-              </Card>
-            ))}
+    <section className="bg-muted py-20 lg:py-24">
+      <div className="container mx-auto px-4">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-12 max-w-2xl">
+            <p className="eyebrow mb-5">Sectors &amp; Topics</p>
+            <h2 className="section-title">Areas in which we advise</h2>
+            <p className="section-lead mt-4">A broader view of the industries and legal topics our team regularly handles.</p>
           </div>
-        ))}
+          <ul className="grid grid-cols-1 gap-x-8 sm:grid-cols-2 lg:grid-cols-3">
+            {all.map((topic) => (
+              <li
+                key={topic}
+                className="flex items-center gap-3 border-b border-border py-3 text-sm font-medium text-secondary dark:text-foreground"
+              >
+                <span className="h-1.5 w-1.5 shrink-0 bg-primary" /> {topic}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-    </div>
-  );
+    </section>
+  )
 }

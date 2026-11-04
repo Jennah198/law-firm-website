@@ -1,9 +1,10 @@
+import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import Image from "next/image"
-import { Card, CardContent } from "@/components/ui/card"
+import Link from "next/link"
+import { Check } from "lucide-react"
+import { PageHeader } from "@/components/page-header"
 import { ContactSection } from "@/features/sections/contact-section"
-import { Footer } from "@/components/footer"
-import { Navigation } from "@/components/navigation"
 
 const practiceAreasData = {
   "investment-law": {
@@ -106,94 +107,90 @@ const practiceAreasData = {
 
 type Params = { params: Promise<{ slug: string }> }
 
+const approach = [
+  "Comprehensive legal analysis and strategic planning",
+  "Regulatory compliance and risk assessment",
+  "Document preparation and contract review",
+  "Transaction structuring and negotiation support",
+  "Dispute resolution and legal representation",
+  "Ongoing advisory and industry-specific guidance",
+]
+
+export async function generateMetadata({ params }: Params): Promise<Metadata> {
+  const { slug } = await params
+  const area = practiceAreasData[slug as keyof typeof practiceAreasData]
+  return area ? { title: area.title, description: area.subtitle } : {}
+}
+
 export default async function PracticeAreaDetail({ params }: Params) {
   const { slug } = await params
   const area = practiceAreasData[slug as keyof typeof practiceAreasData]
-  
-  if (!area) return notFound()
+  if (!area) notFound()
+
+  const others = Object.entries(practiceAreasData)
+    .filter(([key]) => key !== slug)
+    .slice(0, 6)
 
   return (
-    <main className="min-h-screen bg-muted">
-      <Navigation />
-      <section className="py-14 mt-20">
-        <div className="max-w-6xl mx-auto px-4">
-          {/* Banner Image */}
-          <div className="relative w-full h-64 rounded-xl overflow-hidden mb-12">
-            <Image
-              src={area.banner}
-              alt={`${area.title} banner`}
-              fill
-              className="object-cover"
-              priority
-            />
-          </div>
+    <main>
+      <PageHeader eyebrow="Practice Areas" title={area.title} description={area.subtitle} image={area.banner} />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {/* Left Section */}
-            <div className="md:col-span-2 space-y-6">
-              <div>
-                <h2 className="text-3xl font-bold text-primary mb-2">
-                  {area.title}
-                </h2>
-                <p className="text-muted-foreground font-semibold text-sm">
-                  {area.subtitle}
-                </p>
-              </div>
+      <section className="bg-background py-20 lg:py-24">
+        <div className="container mx-auto px-4">
+          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 lg:grid-cols-3">
+            <div className="lg:col-span-2">
+              <p className="eyebrow mb-5">Overview</p>
+              <p className="text-lg leading-relaxed text-foreground/85">{area.description}</p>
 
-              <p className="text-foreground leading-relaxed">{area.description}</p>
-
-              <ul className="list-disc list-inside space-y-2 text-foreground text-sm">
-                <li>Comprehensive legal analysis and strategic planning</li>
-                <li>Regulatory compliance and risk assessment</li>
-                <li>Document preparation and contract review</li>
-                <li>Dispute resolution and legal representation</li>
-                <li>Ongoing legal advisory and support services</li>
-                <li>Industry-specific regulatory guidance</li>
-                <li>Transaction structuring and negotiation support</li>
+              <h2 className="mt-12 text-2xl font-semibold text-secondary dark:text-foreground">How we help</h2>
+              <ul className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                {approach.map((a) => (
+                  <li key={a} className="flex gap-3 border border-border p-4 text-sm leading-relaxed">
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" /> {a}
+                  </li>
+                ))}
               </ul>
-
-              <div className="pt-4">
-                <p className="font-semibold text-foreground">
-                  Sadam Hussein Law Office (SHLO) Quick Guide Related to {area.title} in Ethiopia
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  SHLO provides comprehensive legal guides and resources for {area.title} practices in Ethiopia, including regulatory updates, compliance checklists, and strategic advisory services tailored to your specific needs.
-                </p>
-              </div>
             </div>
 
-            {/* Right Section (Author Photo) */}
-            <Card className="bg-card rounded-lg shadow-sm h-fit">
-              <CardContent className="p-6 flex flex-col items-center">
-                <div className="relative w-40 h-56 bg-accent rounded-md overflow-hidden mb-4">
-                  <Image
-                    src="/sadam-hero.png"
-                    alt="Sadam Hussein"
-                    fill
-                    className="object-cover"
-                  />
+            <aside className="space-y-8">
+              <div className="overflow-hidden border border-border bg-card">
+                <div className="relative aspect-[4/3] bg-accent">
+                  <Image src="/sadam-hero.png" alt="Sadam Hussein" fill sizes="(min-width: 1024px) 33vw, 100vw" className="object-cover object-top" />
                 </div>
-                <p className="font-semibold text-center text-card-foreground">
-                  Sadam Hussein
-                </p>
-                <p className="text-sm text-muted-foreground text-center">Managing Partner</p>
-                <p className="text-xs text-muted-foreground text-center mt-2">
-                  Specialized in {area.title} with extensive experience in Ethiopian legal practice.
-                </p>
-              </CardContent>
-            </Card>
+                <div className="p-6">
+                  <p className="font-serif text-xl font-semibold text-secondary dark:text-foreground">Sadam Hussein</p>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-primary">Founder &amp; Principal Attorney</p>
+                  <Link
+                    href="/contact#scheduling"
+                    className="mt-5 inline-flex w-full justify-center rounded-sm bg-secondary px-5 py-3 text-xs font-semibold uppercase tracking-wider text-secondary-foreground hover:bg-primary"
+                  >
+                    Discuss your matter
+                  </Link>
+                </div>
+              </div>
+
+              <div className="border border-border p-6">
+                <h2 className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-primary">Other practice areas</h2>
+                <ul className="mt-4 space-y-3 text-sm">
+                  {others.map(([key, a]) => (
+                    <li key={key}>
+                      <Link href={`/practice-areas/${key}`} className="text-secondary hover:text-primary dark:text-foreground">
+                        {a.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </aside>
           </div>
         </div>
       </section>
 
       <ContactSection />
-      <Footer />
     </main>
   )
 }
 
 export async function generateStaticParams() {
-  return Object.keys(practiceAreasData).map((slug) => ({
-    slug: slug,
-  }))
+  return Object.keys(practiceAreasData).map((slug) => ({ slug }))
 }

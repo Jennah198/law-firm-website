@@ -1,183 +1,119 @@
-import { notFound } from "next/navigation";
-import { insightsData } from "@/lib/insights";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
-import Link from "next/link";
-import { Linkedin, Facebook, Twitter, Instagram } from "lucide-react";
-import { Navigation } from "@/components/navigation";
-import { ContactSection } from "@/features/sections/contact-section";
-import { Footer } from "@/components/footer";
+import type { Metadata } from "next"
+import { notFound } from "next/navigation"
+import Image from "next/image"
+import Link from "next/link"
+import { ArrowLeft, Calendar, Check, Quote, User } from "lucide-react"
+import { insightsData } from "@/lib/insights"
+import { ContactSection } from "@/features/sections/contact-section"
 
-export default async function InsightDetailPage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-  const { slug } = await params;
-  const insight = insightsData.find((i) => i.slug === slug);
+type Params = { params: Promise<{ slug: string }> }
 
-  if (!insight) return notFound();
+export function generateStaticParams() {
+  return insightsData.map((i) => ({ slug: i.slug }))
+}
+
+export async function generateMetadata({ params }: Params): Promise<Metadata> {
+  const { slug } = await params
+  const insight = insightsData.find((i) => i.slug === slug)
+  return insight ? { title: insight.title, description: insight.overview } : {}
+}
+
+export default async function InsightDetailPage({ params }: Params) {
+  const { slug } = await params
+  const insight = insightsData.find((i) => i.slug === slug)
+  if (!insight) notFound()
+
+  const related = insightsData.filter((i) => i.slug !== slug).slice(0, 3)
 
   return (
-    <div className="min-h-screen bg-muted mt-[90px]">
-      {/* --- PREHEADER + NAVIGATION --- */}
-      <Navigation />
-
-      {/* --- CENTERED CONTENT --- */}
-      <div className="max-w-4xl mx-auto px-6 py-10 space-y-8">
-
-        {/* Header */}
-        <div className="flex justify-between items-center text-secondary font-semibold text-xl">
-          <span>Insights</span>
-
-          <div className="flex space-x-4 text-base">
-            <Link href="/who-we-are">
-              <Button className="bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
-                About
-              </Button>
+    <main>
+      <article className="bg-background py-14 lg:py-20">
+        <div className="container mx-auto px-4">
+          <div className="mx-auto max-w-6xl">
+            <Link href="/insights" className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary">
+              <ArrowLeft className="h-4 w-4" /> All insights
             </Link>
 
-            <Link href="/contact">
-              <Button className="bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground transition-colors">
-                Contact
-              </Button>
-            </Link>
-          </div>
-        </div>
+            <header className="mt-8 max-w-3xl">
+              <p className="text-xs font-semibold uppercase tracking-wider text-primary">{insight.category}</p>
+              <h1 className="mt-4 font-serif text-3xl font-semibold leading-tight text-secondary dark:text-foreground md:text-5xl">
+                {insight.title}
+              </h1>
+              <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
+                <span className="flex items-center gap-2"><Calendar className="h-4 w-4" /> {insight.date}</span>
+                <span className="flex items-center gap-2"><User className="h-4 w-4" /> {insight.author}</span>
+              </div>
+            </header>
 
-        {/* Hero Image */}
-        <div className="relative w-full h-64 rounded-md overflow-hidden">
-          <Image
-            src={insight.image}
-            alt={insight.title}
-            fill
-            className="object-cover"
-          />
-        </div>
+            <div className="relative mt-10 aspect-[21/9] overflow-hidden bg-accent">
+              <Image src={insight.image} alt="" fill priority sizes="(min-width: 1280px) 1152px, 100vw" className="object-cover" />
+            </div>
 
-        {/* Title */}
-        <h1 className="text-3xl font-bold text-secondary leading-snug">
-          {insight.title}
-        </h1>
+            <div className="mt-12 grid grid-cols-1 gap-12 lg:grid-cols-3">
+              <div className="space-y-10 lg:col-span-2">
+                <section>
+                  <h2 className="text-2xl font-semibold text-secondary dark:text-foreground">Overview</h2>
+                  <p className="mt-4 text-lg leading-relaxed text-foreground/85">{insight.overview}</p>
+                </section>
 
-        {/* Meta */}
-        <div className="flex space-x-6 text-sm text-secondary opacity-80">
-          <span>{insight.date}</span>
-          <span>By {insight.author}</span>
-          <span>{insight.category}</span>
-        </div>
+                <section>
+                  <h2 className="text-2xl font-semibold text-secondary dark:text-foreground">Key changes</h2>
+                  <ul className="mt-5 space-y-3">
+                    {insight.keyChanges.map((point) => (
+                      <li key={point} className="flex gap-3 leading-relaxed text-foreground/85">
+                        <Check className="mt-1 h-4 w-4 shrink-0 text-primary" /> {point}
+                      </li>
+                    ))}
+                  </ul>
+                </section>
 
-        {/* --- GRID LAYOUT --- */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <section className="relative bg-secondary p-8 text-secondary-foreground">
+                  <Quote className="h-8 w-8 text-brand-gold-400" />
+                  <h2 className="sr-only">Expert insight</h2>
+                  <p className="mt-4 font-serif text-xl italic leading-relaxed">{insight.expertInsight}</p>
+                  <p className="mt-4 text-sm text-brand-gold-400">— {insight.author}</p>
+                </section>
 
-          {/* MAIN CONTENT */}
-          <div className="md:col-span-2 space-y-8 text-secondary">
+                <p className="border-t border-border pt-6 text-xs text-muted-foreground">
+                  This insight is for general information only and does not constitute legal advice.
+                </p>
+              </div>
 
-            <section>
-              <h2 className="text-xl font-semibold mb-2">Overview</h2>
-              <p>{insight.overview}</p>
-            </section>
-
-            <section>
-              <h2 className="text-xl font-semibold mb-3">Key Changes</h2>
-              <ul className="space-y-2 list-disc list-inside">
-                {insight.keyChanges.map((point, i) => (
-                  <li key={i}>{point}</li>
-                ))}
-              </ul>
-            </section>
-
-            <section>
-              <h2 className="text-xl font-semibold mb-2">Expert Insight</h2>
-              <p>{insight.expertInsight}</p>
-            </section>
-
-            {/* Comment Box */}
-            <section>
-              <h2 className="text-xl font-semibold mb-2">What It Means for You?</h2>
-              <Card className="bg-card border border-border">
-                <CardContent className="p-4 text-sm text-foreground flex items-center space-x-3">
-                  <span>💬</span>
-                  <input
-                    type="text"
-                    placeholder="Drop your Insight as a comment."
-                    className="w-full focus:outline-none bg-transparent"
-                  />
-                </CardContent>
-              </Card>
-            </section>
-
-          </div>
-
-          {/* SIDEBAR */}
-          <div className="space-y-10">
-
-            <div className="flex flex-col justify-between space-y-10 h-full">
-
-              {/* Related Articles */}
-              <Card className="bg-accent border-none rounded-md">
-                <CardContent className="p-4 space-y-3 text-secondary">
-                  <h3 className="font-semibold text-lg">Related Articles</h3>
-                  <div className="text-sm space-y-2">
-                    <p>Tax Law Amendments 2025: What You Need to Know</p>
-                    <p>Corporate Governance in East Africa</p>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Share Section */}
-              <div className="space-y-3">
-                <h3 className="font-semibold text-lg text-secondary">Share</h3>
-
-                <div className="flex items-center space-x-4 pt-1">
+              <aside className="space-y-8">
+                <div className="bg-muted p-6">
+                  <h2 className="font-serif text-xl font-semibold text-secondary dark:text-foreground">Need tailored advice?</h2>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                    Speak with our team about how these developments affect your organisation.
+                  </p>
                   <Link
-                    href="https://www.linkedin.com/company/shlo"
-                    aria-label="LinkedIn"
-                    className="group"
+                    href="/contact#scheduling"
+                    className="mt-5 inline-flex rounded-sm bg-secondary px-5 py-3 text-xs font-semibold uppercase tracking-wider text-secondary-foreground hover:bg-primary"
                   >
-                    <Linkedin className="h-6 w-6 stroke-[1.75] text-secondary group-hover:text-[hsl(var(--primary))] transition-colors" />
-                  </Link>
-
-                  <Link href="https://facebook.com/shlo" aria-label="Facebook" className="group">
-                    <Facebook className="h-6 w-6 stroke-[1.75] text-secondary group-hover:text-[hsl(var(--primary))] transition-colors" />
-                  </Link>
-
-                  <Link href="https://twitter.com/shlo" aria-label="Twitter" className="group">
-                    <Twitter className="h-6 w-6 stroke-[1.75] text-secondary group-hover:text-[hsl(var(--primary))] transition-colors" />
-                  </Link>
-
-                  <Link href="https://instagram.com/shlo" aria-label="Instagram" className="group">
-                    <Instagram className="h-6 w-6 stroke-[1.75] text-secondary group-hover:text-[hsl(var(--primary))] transition-colors" />
+                    Book a consultation
                   </Link>
                 </div>
-              </div>
 
-              {/* Author Box */}
-              <div className="flex items-center space-x-4 pt-4">
-                <div className="w-16 h-16 bg-accent rounded-full" />
-                <div className="text-sm">
-                  <p className="font-semibold">Attorney Sadam Hussein</p>
-                  <p className="opacity-70">Specialized in Corporate Law</p>
+                <div className="border border-border p-6">
+                  <h2 className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-primary">Related insights</h2>
+                  <ul className="mt-4 divide-y divide-border">
+                    {related.map((r) => (
+                      <li key={r.slug} className="py-4 first:pt-0 last:pb-0">
+                        <Link href={`/insights/${r.slug}`} className="group block">
+                          <span className="text-xs text-muted-foreground">{r.date}</span>
+                          <span className="mt-1 block font-serif font-semibold leading-snug text-secondary group-hover:text-primary dark:text-foreground">
+                            {r.title}
+                          </span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              </div>
-
-              {/* Back Button */}
-              <Link href="/insights">
-                <Button className="bg-secondary text-secondary-foreground px-4 py-2 rounded-md shadow hover:bg-primary hover:text-primary-foreground transition-colors">
-                  ← Back to Insights
-                </Button>
-              </Link>
-
+              </aside>
             </div>
           </div>
-
         </div>
-      </div>
-
-      {/* --- CONTACT + FOOTER --- */}
+      </article>
       <ContactSection />
-      <Footer />
-    </div>
-  );
+    </main>
+  )
 }

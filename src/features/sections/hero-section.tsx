@@ -1,95 +1,61 @@
-"use client"
-
-import { Button } from "@/components/ui/button"
-import { Phone } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import { ArrowRight, Briefcase, Landmark, Scale } from "lucide-react"
+
+const pillars = [
+  { icon: Briefcase, title: "Corporate", text: "Formation, governance and transactions." },
+  { icon: Landmark, title: "Investment", text: "Licensing, incentives and structuring." },
+  { icon: Scale, title: "Disputes", text: "Litigation, arbitration and mediation." },
+]
 
 export function HeroSection() {
   return (
-    <section className="py-20 bg-[hsl(var(--muted))] relative h-screen flex items-center justify-center">
-      {/* Background Image */}
-      {/* <div className="absolute inset-0 z-0">
-        <Image
-          src="/construction.jpg"
-          alt="Hero Background"
-          style={{
-                filter: 'blur(2px) brightness(0.9)', // Blur + dim effect
-                }}
-          fill
-          className="object-cover"
-          priority
-        />
-      </div> */}
-
-      {/* Content */}
-      <div className="container mx-auto px-4 z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center justify-center max-w-6xl mx-auto">
-          {/* Left Column - Text Content */}
-          <div className="space-y-4 text-center md:text-left">
-            <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold leading-tight">
-              <span className="text-secondary">Legal Solution for</span>
-              <br />
-              <span className="text-primary">Corporate</span>
-              <span className="text-secondary"> &</span>
-              <br />
-              <span className="text-primary">Investment.</span>
-            </h1>
-
-            <p className="text-lg text-muted-foreground font-bold max-w-xl mx-auto md:mx-0">
-              Ethiopia&apos;s premier corporate law firm 
-              <br />
-              providing comprehensive legal 
-              <br />
-              solutions with
-              <span className="text-primary font-semibold">
-                {" "}unmatched 
-                <br />
-                expertise
-              </span>{" "}
-              and
-              <span className="text-primary font-semibold">
-                {" "}proven results.
-              </span>
+    <section className="bg-muted py-20 lg:py-28">
+      <div className="container mx-auto px-4">
+        <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          <div>
+            <p className="eyebrow mb-5">Legal Solutions</p>
+            <h2 className="font-serif text-3xl font-semibold leading-tight text-secondary dark:text-foreground md:text-5xl">
+              Legal solutions for <span className="italic text-primary">corporate</span> &amp;{" "}
+              <span className="italic text-primary">investment</span> success.
+            </h2>
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
+              A full-service Ethiopian law office providing comprehensive legal counsel with deep local expertise,
+              practical judgment and a steady focus on results.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start pt-4">
-              {/* Primary Button - Link to Contact Page */}
-              <Link 
-                href="/contact"
-                className="flex-1 min-w-0"
-              >
-                <Button
-                  size="lg"
-                  className="rounded-md font-medium bg-secondary hover:bg-primary text-secondary-foreground hover:text-primary-foreground transition-all duration-300 w-full"
-                >
-                  Book a Consultation
-                </Button>
-              </Link>
-
-              {/* Outline Button */}
-              <Button
-                size="lg"
-                variant="outline"
-                className="rounded-md bg-transparent font-medium border-2 border-secondary text-secondary hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300 flex-1 min-w-0 w-full"
-              >
-                <Phone className="h-4 w-4 mr-2" />
-                <a href="tel:+251913693679" className="truncate">
-                  Call Now: +251 91 369 3679
-                </a>
-              </Button>
+            <div className="mt-10 grid gap-6 sm:grid-cols-3">
+              {pillars.map(({ icon: Icon, title, text }) => (
+                <div key={title} className="border-l-2 border-primary pl-4">
+                  <Icon className="mb-3 h-5 w-5 text-primary" />
+                  <div className="font-serif text-lg font-semibold text-secondary dark:text-foreground">{title}</div>
+                  <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{text}</p>
+                </div>
+              ))}
             </div>
+
+            <Link
+              href="/practice-areas-inner"
+              className="mt-10 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-secondary transition-colors hover:text-primary dark:text-foreground"
+            >
+              Explore our practice areas <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
 
-          {/* Right Column - Image */}
-          <div className="relative flex justify-center">
-            <div className="relative w-96 h-80 md:w-[400px] md:h-[450px] lg:w-[400px] lg:h-[600px]">
+          <div className="relative mx-auto w-full max-w-md">
+            <div className="absolute -bottom-4 -right-4 h-full w-full border-2 border-primary" aria-hidden />
+            <div className="relative aspect-[4/5] overflow-hidden bg-accent">
               <Image
                 src="/sadam-hero.png"
-                alt="Sadam Hussein"
+                alt="Sadam Hussein, Founder & Principal Attorney"
                 fill
-                className="object-cover rounded-none"
+                sizes="(min-width: 1024px) 448px, 90vw"
+                className="object-cover"
               />
+            </div>
+            <div className="absolute -left-4 bottom-8 bg-secondary px-5 py-4 text-secondary-foreground shadow-xl sm:-left-8">
+              <div className="font-serif text-lg font-semibold">Sadam Hussein</div>
+              <div className="text-xs uppercase tracking-wider text-brand-gold-400">Founder &amp; Principal Attorney</div>
             </div>
           </div>
         </div>

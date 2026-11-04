@@ -1,64 +1,65 @@
 import Link from "next/link"
-import { Phone, Facebook, Linkedin } from "lucide-react"
 import Image from "next/image"
+import { Mail, Phone } from "lucide-react"
+
+const expertise = ["Corporate Law", "Investment Law", "Commercial Transactions", "Dispute Resolution"]
 
 export function Teams() {
   return (
-    <section id="teams" className="bg-[hsl(var(--muted))]">
-      <div className="max-w-5xl mx-auto py-12 px-4 sm:px-6 lg:px-8 text-center space-y-12">
-        {/* Header */}
-        <div>
-          <h2 className="text-3xl font-extrabold text-[hsl(var(--secondary))] mb-3">Teams</h2>
-          <p className="text-base font-medium text-[hsl(var(--muted-foreground))]">
-            A Team of Legal Experts United by Integrity, Excellent Legal Solution.
-          </p>
-          <p className="text-base text-[hsl(var(--muted-foreground))] leading-relaxed max-w-2xl mx-auto mt-2">
-            Meet our experienced team of legal professionals dedicated to providing exceptional service and expertise.
-          </p>
-        </div>
-
-        {/* Team Member Card */}
-        <div className="bg-[hsl(var(--card))] border border-[hsl(var(--border))] rounded-lg p-6 md:p-8 text-left flex flex-col md:flex-row items-center md:items-start gap-6 hover:shadow-md transition-shadow">
-          {/* Real Image Placeholder */}
-          <div className="w-40 h-52 bg-[hsl(var(--accent))] border border-[hsl(var(--border))] rounded-none overflow-hidden">
-            <Image
-              src="/sadam-teams.jpg"
-              alt="Sadam Hussein - Principal & General Attorney"
-              width={160}
-              height={208}
-              className="w-full h-full object-cover"
-            />
+    <section id="teams" className="bg-muted py-20 lg:py-28">
+      <div className="container mx-auto px-4">
+        <div className="mx-auto max-w-6xl">
+          <div className="mx-auto mb-14 max-w-2xl text-center">
+            <p className="eyebrow mb-5 justify-center">Our Team</p>
+            <h2 className="section-title">Legal experts united by integrity</h2>
+            <p className="section-lead mt-4">
+              Meet the professionals dedicated to delivering exceptional service, sound judgement and excellent legal
+              solutions.
+            </p>
           </div>
 
-          {/* Text */}
-          <div className="flex-1">
-            <div className="text-xl font-bold text-[hsl(var(--secondary))]">Sadam Hussein</div>
-            <div className="text-sm font-semibold text-[hsl(var(--primary))] mb-3">Principal & General Attorney</div>
-            <p className="text-sm text-[hsl(var(--muted-foreground))] leading-relaxed mb-4">
-              Sadam Hussein is the founding principal of SHLO with over 5 years of experience in Ethiopian law. He specializes in corporate law, commercial transactions, and has represented numerous multinational corporations and local businesses in complex legal matters.
-              Sadam Hussein is the founding principal of SHLO with over 5 years of experience in Ethiopian law. He specializes in corporate law, commercial transactions, and has represented numerous multinational corporations and local businesses in complex legal matters.
-            </p>
+          <div className="grid grid-cols-1 overflow-hidden border border-border bg-card md:grid-cols-5">
+            <div className="relative aspect-[4/5] bg-accent md:col-span-2 md:aspect-auto md:min-h-[460px]">
+              <Image
+                src="/sadam-teams.jpg"
+                alt="Sadam Hussein, Founder & Principal Attorney"
+                fill
+                sizes="(min-width: 768px) 40vw, 100vw"
+                className="object-cover object-top"
+              />
+            </div>
 
-            {/* Social / Contact */}
-            <div className="flex items-center gap-3 mt-2">
-              <Link
-                href="#contact"
-                className="flex items-center gap-1 text-sm font-medium rounded-md border px-3 py-1 bg-[hsl(var(--accent))] border-[hsl(var(--border))] text-[hsl(var(--secondary))] transition-colors hover:bg-[hsl(var(--secondary))] hover:text-[hsl(var(--secondary-foreground))] hover:border-[hsl(var(--secondary))]"
-              >
-                <Phone className="h-4 w-4" /> Contact
-              </Link>
-              <Link
-                href="#"
-                className="flex items-center gap-1 text-sm font-medium rounded-md border px-3 py-1 bg-[hsl(var(--accent))] border-[hsl(var(--border))] text-[hsl(var(--secondary))] transition-colors hover:bg-[hsl(var(--secondary))] hover:text-[hsl(var(--secondary-foreground))] hover:border-[hsl(var(--secondary))]"
-              >
-                <Facebook className="h-4 w-4" /> Facebook
-              </Link>
-              <Link
-                href="#"
-                className="flex items-center gap-1 text-sm font-medium rounded-md border px-3 py-1 bg-[hsl(var(--accent))] border-[hsl(var(--border))] text-[hsl(var(--secondary))] transition-colors hover:bg-[hsl(var(--secondary))] hover:text-[hsl(var(--secondary-foreground))] hover:border-[hsl(var(--secondary))]"
-              >
-                <Linkedin className="h-4 w-4" /> LinkedIn
-              </Link>
+            <div className="flex flex-col justify-center p-8 md:col-span-3 md:p-12">
+              <p className="eyebrow mb-3">Founder &amp; Principal Attorney</p>
+              <h3 className="text-3xl font-semibold text-secondary dark:text-foreground">Sadam Hussein</h3>
+              <p className="mt-5 leading-relaxed text-muted-foreground">
+                Sadam Hussein is the founding principal of SHLO with over five years of experience in Ethiopian law. He
+                specialises in corporate law and commercial transactions, and has represented numerous multinational
+                corporations and local businesses in complex legal matters.
+              </p>
+
+              <ul className="mt-6 flex flex-wrap gap-2">
+                {expertise.map((e) => (
+                  <li key={e} className="border border-border bg-accent px-3 py-1 text-xs font-medium text-secondary dark:text-foreground">
+                    {e}
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link
+                  href="/contact#scheduling"
+                  className="inline-flex items-center gap-2 rounded-sm bg-secondary px-5 py-2.5 text-sm font-semibold text-secondary-foreground transition-colors hover:bg-primary"
+                >
+                  <Phone className="h-4 w-4" /> Schedule a meeting
+                </Link>
+                <a
+                  href="mailto:info@sadamhusseinlaw.com"
+                  className="inline-flex items-center gap-2 rounded-sm border border-border px-5 py-2.5 text-sm font-semibold text-secondary transition-colors hover:border-primary hover:text-primary dark:text-foreground"
+                >
+                  <Mail className="h-4 w-4" /> Email
+                </a>
+              </div>
             </div>
           </div>
         </div>

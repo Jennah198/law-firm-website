@@ -1,70 +1,77 @@
+import type { Metadata } from "next"
 import { notFound } from "next/navigation"
+import Link from "next/link"
 import { SERVICES_DATA } from "@/lib/services-data"
+import { PageHeader } from "@/components/page-header"
 import { ContactSection } from "@/features/sections/contact-section"
-import { Footer } from "@/components/footer"
-import Image from "next/image"
 
 type Params = { params: Promise<{ slug: string }> }
 
-export default async function ServiceDetailPage({ params }: Params) {
-  const { slug } = await params;
+export function generateStaticParams() {
+  return SERVICES_DATA.map((s) => ({ slug: s.slug }))
+}
+
+export async function generateMetadata({ params }: Params): Promise<Metadata> {
+  const { slug } = await params
   const service = SERVICES_DATA.find((s) => s.slug === slug)
-  
-  if (!service) return notFound()
+  return service ? { title: service.title, description: service.summary } : {}
+}
 
-  // ✅ Array of your specific service images
-  const serviceImages = [
-    "/services/LegalRepresentation.jpg",
-    "/services/CorporateGovernance.jpg",
-    "/services/RiskManagement.jpg",
-    "/services/LegalTraining.jpg",
-    "/services/LegalConsulting.jpg",
-    "/services/LegalDocumentsPreparation.jpg",
-  ]
-
-  // Get image based on service index, fallback to first image if not found
-  const serviceIndex = SERVICES_DATA.findIndex(s => s.slug === slug)
-  const serviceImage = serviceImages[serviceIndex] || serviceImages[0]
+export default async function ServiceDetailPage({ params }: Params) {
+  const { slug } = await params
+  const service = SERVICES_DATA.find((s) => s.slug === slug)
+  if (!service) notFound()
 
   return (
-    <main className="min-h-screen bg-muted">
-      <section id="inner-service" className="py-14">
-        <div className="max-w-5xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-            <div>
-              <h5 className="text-2xl font-semibold mb-4 text-secondary">
-                {service.title}
-              </h5>
-              <div className="mb-6">
-                <div className="w-full h-56 bg-accent rounded-lg overflow-hidden">
-                  <Image
-                    src={serviceImage}
-                    alt={`${service.title} illustration`}
-                    width={600}
-                    height={224}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+    <main>
+      <PageHeader eyebrow="Services" title={service.title} image={service.image} />
+
+      <section className="bg-background py-20 lg:py-24">
+        <div className="container mx-auto px-4">
+          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 lg:grid-cols-3">
+            <div className="space-y-12 lg:col-span-2">
+              <div>
+                <p className="eyebrow mb-5">Overview</p>
+                <p className="text-lg leading-relaxed text-foreground/85">{service.overview}</p>
               </div>
-              <div className="mb-8">
-                <div className="text-base font-semibold mb-2 text-primary">
-                  Overview:
-                </div>
-                <p className="text-foreground leading-relaxed">{service.overview}</p>
+              <div>
+                <p className="eyebrow mb-5">How we add value</p>
+                <p className="leading-relaxed text-foreground/85">{service.value}</p>
               </div>
             </div>
-            <div className="md:pt-0">
-              <div className="text-base font-semibold mb-2 text-primary">
-                How We Add Value:
+
+            <aside className="space-y-8">
+              <div className="border border-border p-6">
+                <h2 className="font-sans text-xs font-semibold uppercase tracking-[0.2em] text-primary">Our services</h2>
+                <ul className="mt-4 space-y-3 text-sm">
+                  {SERVICES_DATA.map((s) => (
+                    <li key={s.slug}>
+                      <Link
+                        href={`/services/${s.slug}`}
+                        className={s.slug === slug ? "font-semibold text-primary" : "text-secondary hover:text-primary dark:text-foreground"}
+                      >
+                        {s.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <p className="text-foreground leading-relaxed">{service.value}</p>
-            </div>
+              <div className="bg-secondary p-6 text-secondary-foreground">
+                <h2 className="font-serif text-xl font-semibold">Need assistance?</h2>
+                <p className="mt-3 text-sm text-secondary-foreground/75">Speak with our team about your matter.</p>
+                <Link
+                  href="/contact#scheduling"
+                  className="mt-5 inline-flex rounded-sm bg-primary px-5 py-3 text-xs font-semibold uppercase tracking-wider text-white hover:bg-brand-gold-600"
+                >
+                  Book a consultation
+                </Link>
+              </div>
+            </aside>
           </div>
         </div>
       </section>
 
       <ContactSection />
-      <Footer />
     </main>
   )
 }
